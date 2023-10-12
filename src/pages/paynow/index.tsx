@@ -48,18 +48,15 @@ const PayNow = () => {
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
               <div className="ease-in duration-300">
-                <div className="text-center mx-auto mb-6">
-                  <Image
-                    src="/img/star.svg"
-                    width={32}
-                    height={32}
-                    alt="Picture of the author"
-                    className="text-center mx-auto mb-3"
-                  />
-                  <p className="text-[26px] font-[500] text-white">
-                    {tr(x.REQUEST_HAYYA)}
-                  </p>
-                </div>
+                <div className="text-center mx-auto mt-10 mb-6">
+                    <Image
+                      src="/img/logo_old.png"
+                      width={180}
+                      height={120}
+                      alt="Picture of the author"
+                      className="text-center mx-auto mb-3"
+                    />
+                  </div>
                 <div className="bg-white border-solid border-2  border-gray-100 rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
                   <h3 className=" text-[22px] font-[500] w-full mb-10">
                     Summary

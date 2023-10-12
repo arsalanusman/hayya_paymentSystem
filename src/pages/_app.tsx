@@ -26,14 +26,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <Provider store={store}>
-      <TopNavigation />
-      <div className='Sticky-main'>
-      <Sticky>
-      <Header />
-      </Sticky>
-      </div>
       <Component {...pageProps} />
-      <Footer />
     </Provider>
   )
 }
