@@ -1,4 +1,3 @@
-// components/ApplicationInformation.js
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
@@ -12,67 +11,47 @@ import { useRouter } from "next/navigation";
 type Props = {};
 
 const FILE_NAME = "hayya-with-me";
-const x = HayyaWithMe;
 
 const Payment = () => {
   const { t } = useTranslation([FILE_NAME]);
-  const tr = (key: string) => getTranslation(t, FILE_NAME, key);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [insuranceData, setInsuranceData] = useState([]);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isButtonActive, setIsButtonActive] = useState(false);
-  const Router = useRouter()
+  const apiUrl = '/api/services';
+  const Router = useRouter();
 
-  const handleCardClick = (index: any) => {
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setInsuranceData(data.filter((x:any)=>x.subService == 'Insurance'));
+        localStorage.setItem("visa", JSON.stringify(data.filter((x:any)=>x.subService != 'Insurance')));
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  const handleCardClick = (index:any) => {
     setSelectedCardIndex(index);
-    setIsButtonActive(true); // Enable the "Next" button when a card is selected
+    setIsButtonActive(true);
     // You can also save the selected insurance data in localStorage here
     const selectedInsurance = insuranceData[index];
     localStorage.setItem("selectedInsurance", JSON.stringify(selectedInsurance));
   };
 
-  let storedInsurance:any;
-  const insuranceData = [
-    {
-      name: 'QLM Insurance',
-      logoSrc: '/img/qlm.webp',
-      terms: 'Terms and Conditions',
-      price: '18 QAR',
-      serviceBreakdown: 'Service Breakdown',
-    },
-    {
-      name: 'QIC Insurance',
-      logoSrc: '/img/QIC.png',
-      terms: 'Terms and Conditions',
-      price: '19 QAR',
-      serviceBreakdown: 'Service Breakdown',
-    },
-    {
-      name: 'Beema Insurance',
-      logoSrc: '/img/beema.jpg',
-      terms: 'Terms and Conditions',
-      price: '20 QAR',
-      serviceBreakdown: 'Service Breakdown',
-    }
-    // Add more insurance data items as needed
-  ];
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    if (typeof localStorage !== "undefined") {
-      // Check if the selectedInsurance item exists in localStorage
-      storedInsurance = localStorage.getItem("selectedInsurance");
-      if (storedInsurance) {
-        // Parse the storedInsurance JSON if it exists
-        const selectedInsurance = JSON.parse(storedInsurance);
-        console.log("Selected Insurance:", selectedInsurance);
-      }
-    }
-  }, []);
-
   return (
     <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#0C4532] to-[#327886] to-100%  mx-auto  h-full w-full ">
-      {isLoading && (
+      {isLoading ? (
+        // Loading content
+        <>
+          {/* Your loading content here */}
+        </>
+      ) : (
+        // Render content after data is fetched
         <>
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
@@ -101,21 +80,18 @@ const Payment = () => {
                           openSummary={false}
                         />
                       ))}
-                    </ul> 
-                    
-                    <div className="flex justify-end"> {/* Align the button to the right */}
-                    
-                    {isButtonActive && (
-                      <button
-                        className=" text-white p-3 pl-8 pr-8 mt-5 bg-[#d5cc65]   rounded-md"
-                        onClick={() => Router.push('/paynow')}
-                      >
-                        Next
-                      </button>
-                    )}
+                    </ul>
+                    <div className="flex justify-end">
+                      {isButtonActive && (
+                        <button
+                          className="text-white p-3 pl-8 pr-8 mt-5 bg-[#d5cc65]   rounded-md"
+                          onClick={() => Router.push('/paynow')}
+                        >
+                          Next
+                        </button>
+                      )}
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>

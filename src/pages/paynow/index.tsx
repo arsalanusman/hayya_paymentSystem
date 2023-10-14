@@ -22,21 +22,27 @@ const PayNow = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [insuranceData, setInsuranceData] = useState([]);
-  let storedInsurance:any;
-  
+  const [cost, setCost] = useState(0)
+  let storedInsurance: any;
+  let visaInsurance: any;
+
   useEffect(() => {
+    
     if (typeof localStorage !== "undefined") {
       storedInsurance = localStorage.getItem("selectedInsurance");
+      visaInsurance = localStorage.getItem("visa");
       if (storedInsurance) {
-        let visaFee = {
-          name: 'Visa Fee',
-          logoSrc: '/img/fee.jpg',
-          terms: 'Terms and Conditions',
-          price: '20 QAR',
-          serviceBreakdown: 'Service Breakdown',
-        }
-        setInsuranceData(():any => [ JSON.parse(storedInsurance), visaFee]);
-        setIsLoading(true);
+        storedInsurance = JSON.parse(storedInsurance);
+        visaInsurance = JSON.parse(visaInsurance)[0];
+        // Use functional updates for state variables
+        setTimeout(() => {
+          setCost((prevCost) => 0);
+          setCost((prevCost) => prevCost + visaInsurance.price);
+          setCost((prevCost) => prevCost + storedInsurance.price);
+          setCost((prevCost) => prevCost + 50);
+          setIsLoading(true);
+        }, 100);
+        setInsuranceData((): any => [storedInsurance, visaInsurance]);
       }
     }
   }, []);
@@ -86,13 +92,13 @@ const PayNow = () => {
                       <div className="flex flex-col space-y-2">
                         <div className="flex justify-between">
                           <p className="font-bold">Total Amount:</p>
-                          <p className="font-bold">100.00 QAR</p>
+                          <p className="font-bold">{cost.toFixed(2)} QAR</p>
                         </div>
                       </div>
                     </div>
                     </div>
                     <div className="space-y-2 border-t-[3px] pt-10 flex justify-between">
-                      <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('/application/payment')}>
+                      <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('/')}>
                         Back
                       </button>
                       <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('https://pay.sandbox.checkout.com/page/hpp_TvSG2Zqjm56y?_pcf')}>

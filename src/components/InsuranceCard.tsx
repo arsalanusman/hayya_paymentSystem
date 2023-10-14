@@ -45,14 +45,14 @@ const InsuranceCard = ({ insuranceData, isSelected, onClick }:any) => {
         <div className="md:w-1/2 sm:w-full">
           <div className="heading">
             <p className="text-xl font-bold mb-1">{insuranceData.name}</p>
-            <span className="text-xs" onClick={()=>openModal(0)}>{insuranceData.terms}</span>
+            <span className="text-xs" onClick={()=>openModal(0)}>{insuranceData.clientName}</span>
           </div>
         </div>
         <div className='sm:hidden border-gray-100 mb-2 mt-2 border-b-[3px]'></div>
         <div className="md:w-1/4 sm:w-full">
           <div className="price">
             <p className="text-xl font-bold">{insuranceData.price}</p>
-            <span className="text-xs block mt-1" onClick={()=>openModal(1)}>{insuranceData.serviceBreakdown}</span>
+            <span className="text-xs block mt-1" onClick={()=>openModal(1)}>{insuranceData.subService}</span>
           </div>
         </div>
         { (
