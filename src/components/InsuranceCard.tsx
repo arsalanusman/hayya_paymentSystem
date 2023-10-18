@@ -38,7 +38,7 @@ const InsuranceCard = ({ insuranceData, isSelected, onClick }:any) => {
       <div className="md:flex  items-center space-x-4">
         <div className="md:w-1/6 sm:w-full ">
           <div className="logo p-2 sm:text-center">
-            <img src={insuranceData.logoSrc} className="md:w-20 mx-auto" alt={insuranceData.name} />
+            <img src={insuranceData?.logo} className="md:w-20 mx-auto" alt={insuranceData.name} />
           </div>
         </div>
         <div className='sm:hidden border-gray-100 mb-2 mt-2 border-b-[3px]'></div>

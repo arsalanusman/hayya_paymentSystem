@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { HayyaWithMe } from "@/helper/enums/hayya-with-me";
 import InsuranceCard from "@/components/InsuranceCard";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {};
 
@@ -20,38 +20,51 @@ const Payment = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const apiUrl = '/api/services';
   const Router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setInsuranceData(data.filter((x:any)=>x.subService == 'Insurance'));
-        localStorage.setItem("visa", JSON.stringify(data.filter((x:any)=>x.subService != 'Insurance')));
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      });
-  }, []);
+    console.log(searchParams.get('serviceType'),'searchParams1')
+    const fetchInsuranceData = async () => {
+      try {
+       
+        const serviceTypeParam = searchParams.get('serviceType')
+        if(serviceTypeParam){
+            const response = await fetch(apiUrl + `?type=${serviceTypeParam}`);
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setInsuranceData(data);
+            setIsLoading(true); // Set isLoading to false when data is available
+          }
+      } catch (error) {
+        setInsuranceData([]);
+        console.error('Error fetching data:', error);
+        setIsLoading(false); // Set isLoading to false on error as well
+      }
+    };
+  
+    fetchInsuranceData();
+  }, [searchParams]);
 
   const handleCardClick = (index:any) => {
     setSelectedCardIndex(index);
     setIsButtonActive(true);
     // You can also save the selected insurance data in localStorage here
     const selectedInsurance = insuranceData[index];
+    let findVisa = insuranceData.filter((x:any)=>x.subService == 'Visa')[0]
+    if(findVisa){
+      localStorage.setItem("visa", JSON.stringify(findVisa));
+    }else{
+      localStorage.setItem("visa", '');
+    }
     localStorage.setItem("selectedInsurance", JSON.stringify(selectedInsurance));
   };
 
   return (
     <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#0C4532] to-[#327886] to-100%  mx-auto  h-full w-full ">
-      {isLoading ? (
-        // Loading content
-        <>
-          {/* Your loading content here */}
-        </>
-      ) : (
-        // Render content after data is fetched
+   
+       
         <>
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
@@ -71,7 +84,7 @@ const Payment = () => {
                   </h3>
                   <div className="block clear-both">
                     <ul className="bg-gray-100 p-4">
-                      {insuranceData.map((data, index) => (
+                    {isLoading && insuranceData.filter((x:any) => x.subService !== 'Visa').map((data, index) => (
                         <InsuranceCard
                           key={index}
                           insuranceData={data}
@@ -85,7 +98,7 @@ const Payment = () => {
                       {isButtonActive && (
                         <button
                           className="text-white p-3 pl-8 pr-8 mt-5 bg-[#d5cc65]   rounded-md"
-                          onClick={() => Router.push('/paynow')}
+                          onClick={() => Router.push(`/paynow${searchParams.get('serviceType') ? `?type=${searchParams.get('serviceType')}`:''}`)}
                         >
                           Next
                         </button>
@@ -97,7 +110,7 @@ const Payment = () => {
             </div>
           </div>
         </>
-      )}
+     
     </div>
   );
 };

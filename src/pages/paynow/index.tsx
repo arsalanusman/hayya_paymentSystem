@@ -23,6 +23,7 @@ const PayNow = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [insuranceData, setInsuranceData] = useState([]);
   const [cost, setCost] = useState(0)
+  const apiUrl = '/api/paynow';
   let storedInsurance: any;
   let visaInsurance: any;
 
@@ -30,26 +31,53 @@ const PayNow = () => {
     
     if (typeof localStorage !== "undefined") {
       storedInsurance = localStorage.getItem("selectedInsurance");
-      visaInsurance = localStorage.getItem("visa");
-      if (storedInsurance) {
-        storedInsurance = JSON.parse(storedInsurance);
-        visaInsurance = JSON.parse(visaInsurance)[0];
+      storedInsurance = JSON.parse(storedInsurance);
+      visaInsurance = localStorage.getItem("visa"); 
+      console.log(visaInsurance)
+     if(visaInsurance != '' && visaInsurance !== "undefined")
+      {
+          visaInsurance = JSON.parse(visaInsurance);
+      } 
+      setInsuranceData((): any => [storedInsurance]);
+      if (visaInsurance) {
         // Use functional updates for state variables
         setTimeout(() => {
           setCost((prevCost) => 0);
           setCost((prevCost) => prevCost + visaInsurance.price);
           setCost((prevCost) => prevCost + storedInsurance.price);
           setCost((prevCost) => prevCost + 50);
-          setIsLoading(true);
+          
         }, 100);
         setInsuranceData((): any => [storedInsurance, visaInsurance]);
       }
+      setIsLoading(true);
     }
   }, []);
 
+  const PayNow = async () => {
+    try { 
+      let request = {
+        "amount": cost,
+        "clientSubServiceId": insuranceData.map((x:any)=>x.id)
+      }
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the request content type
+        },
+        body: JSON.stringify(request), // Convert the request object to JSON
+      });
+      const data = await response.json();
+      Router.push(data.data)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+  };
+    
+  }
+
   return (
     <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#0C4532] to-[#327886] to-100%  mx-auto  h-full w-full ">
-      {isLoading && (
+      
         <>
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
@@ -69,13 +97,15 @@ const PayNow = () => {
                   </h3>
                   <div className="block">
                     <ul className="bg-gray-100 p-4">
-                      {insuranceData.length>0 && insuranceData.map((data:any, index:any) => (
+                    {isLoading && (
+                     insuranceData.length>0 && insuranceData.map((data:any, index:any) => (
                         <InsuranceCard
                           key={index}
                           insuranceData={data}
                           isSelected={index === selectedCardIndex}
                         />
-                      ))}
+                      ))
+                    )}
                     </ul>
                     <div className="flex flex-col space-y-2 border-t-[3px] pt-10">
                     <div className="p-4 rounded-lg">
@@ -101,7 +131,7 @@ const PayNow = () => {
                       <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('/')}>
                         Back
                       </button>
-                      <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('https://pay.sandbox.checkout.com/page/hpp_TvSG2Zqjm56y?_pcf')}>
+                      <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => PayNow()}>
                         Pay Now
                       </button>
                     </div>
@@ -111,7 +141,6 @@ const PayNow = () => {
             </div>
           </div>
         </>
-      )}
     </div>
   );
 };
