@@ -18,8 +18,9 @@ const Homepage = (
   const router = useRouter()
   // const changeTo = i18n.resolvedLanguage === 'en' ? 'ar' : 'en'
 
+
   useEffect(() => {
-    // router.push('/payment')
+    router.push('/')
   }, [])
   return (
     <>

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { HayyaWithMe } from "@/helper/enums/hayya-with-me";
 import InsuranceCard from "@/components/InsuranceCard";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {};
 
@@ -23,6 +23,7 @@ const PayNow = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [insuranceData, setInsuranceData] = useState([]);
   const [cost, setCost] = useState(0)
+  const searchParams = useSearchParams();
   const apiUrl = '/api/paynow';
   let storedInsurance: any;
   let visaInsurance: any;
@@ -33,7 +34,6 @@ const PayNow = () => {
       storedInsurance = localStorage.getItem("selectedInsurance");
       storedInsurance = JSON.parse(storedInsurance);
       visaInsurance = localStorage.getItem("visa"); 
-      console.log(visaInsurance)
      if(visaInsurance != '' && visaInsurance !== "undefined")
       {
           visaInsurance = JSON.parse(visaInsurance);
@@ -44,23 +44,28 @@ const PayNow = () => {
         setTimeout(() => {
           setCost((prevCost) => 0);
           setCost((prevCost) => prevCost + visaInsurance.price);
-          setCost((prevCost) => prevCost + storedInsurance.price);
-          setCost((prevCost) => prevCost + 50);
           
         }, 100);
         setInsuranceData((): any => [storedInsurance, visaInsurance]);
       }
+      setTimeout(() => {
+        setCost((prevCost) => prevCost + storedInsurance.price);
+        setCost((prevCost) => prevCost + 50);
+        
+      }, 100);
       setIsLoading(true);
     }
   }, []);
 
   const PayNow = async () => {
     try { 
+      setIsLoading(false);
+      const serviceTypeParam = searchParams.get('serviceType')
       let request = {
         "amount": cost,
         "clientSubServiceId": insuranceData.map((x:any)=>x.id)
       }
-      const response = await fetch(apiUrl, {
+      const response = await fetch(apiUrl + `?type=${serviceTypeParam}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type
@@ -68,7 +73,7 @@ const PayNow = () => {
         body: JSON.stringify(request), // Convert the request object to JSON
       });
       const data = await response.json();
-      Router.push(data.data)
+      Router.push(data.data)  
     } catch (error) {
       console.error('Error fetching data:', error);
   };
@@ -97,7 +102,7 @@ const PayNow = () => {
                   </h3>
                   <div className="block">
                     <ul className="bg-gray-100 p-4">
-                    {isLoading && (
+                    {isLoading ? (
                      insuranceData.length>0 && insuranceData.map((data:any, index:any) => (
                         <InsuranceCard
                           key={index}
@@ -105,7 +110,13 @@ const PayNow = () => {
                           isSelected={index === selectedCardIndex}
                         />
                       ))
-                    )}
+                    ) : <Image
+                    src="/img/loading.gif"
+                    width={180}
+                    height={120}
+                    alt="Picture of the author"
+                    className="text-center mx-auto mb-3"
+                  />}
                     </ul>
                     <div className="flex flex-col space-y-2 border-t-[3px] pt-10">
                     <div className="p-4 rounded-lg">

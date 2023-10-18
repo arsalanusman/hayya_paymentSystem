@@ -32,6 +32,8 @@ export default async (req, res) => {
       }
     }
 
+    console.log(serviceId,'serviceId')
+
     const response = await fetch("https://hps-api-dev.microsysx.com/api/Services/PayNow", {
         method: "POST",
         headers: {

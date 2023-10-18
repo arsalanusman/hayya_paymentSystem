@@ -98,7 +98,7 @@ const Payment = () => {
                       {isButtonActive && (
                         <button
                           className="text-white p-3 pl-8 pr-8 mt-5 bg-[#d5cc65]   rounded-md"
-                          onClick={() => Router.push(`/paynow${searchParams.get('serviceType') ? `?type=${searchParams.get('serviceType')}`:''}`)}
+                          onClick={() => Router.push(`/paynow${searchParams.get('serviceType') ? `?serviceType=${searchParams.get('serviceType')}`:''}`)}
                         >
                           Next
                         </button>
