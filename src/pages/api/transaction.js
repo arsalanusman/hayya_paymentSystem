@@ -2,10 +2,11 @@ export default async (req, res) => {
   try {
     let request = {
       "transactionId": req.body.transactionId,
-      "externalPartyId": req.body.externalPartyId
+      "externalPartyId": req.body.externalPartyId,
+      "vendorCode": req.body.vendorCode
     }
 
-    const response = await fetch("https://hps-api-dev.microsysx.com/api/Services/transaction-success", {
+    const response = await fetch(`${process.env.BASE_API_URL}/api/Services/transaction-success`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type

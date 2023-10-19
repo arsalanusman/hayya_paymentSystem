@@ -34,7 +34,7 @@ export default async (req, res) => {
 
     console.log(serviceId,'serviceId')
 
-    const response = await fetch("https://hps-api-dev.microsysx.com/api/Services/PayNow", {
+    const response = await fetch(`${process.env.BASE_API_URL}/api/Services/PayNow`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type

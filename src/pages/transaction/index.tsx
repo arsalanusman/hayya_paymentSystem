@@ -17,7 +17,7 @@ const Transaction = () => {
   const Router = useRouter()
   const searchParams =  useSearchParams()
   const id = searchParams.get('id')
-  const statusId = searchParams.get('statusId')
+  const vendorCode = searchParams.get('vendorCode')
   const status = searchParams.get('status')
   const transId = searchParams.get('transId')
   const { t } = useTranslation([FILE_NAME]);
@@ -31,7 +31,8 @@ const Transaction = () => {
   const sendTransaction = async () => {
     let request = {
       "transactionId": transId,
-      "externalPartyId": id
+      "externalPartyId": id,
+      "vendorCode": vendorCode
     }
     const response = await fetch(apiUrl, {
       method: "POST",

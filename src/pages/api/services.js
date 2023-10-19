@@ -7,7 +7,7 @@ export default async (req, res) => {
       id = 'DD6E76F2-346A-4889-AC14-1176A673EF9C'
     }
 
-    const response = await fetch(`https://hps-api-dev.microsysx.com/api/Services?ServiceId=${id}`);
+    const response = await fetch(`${process.env.BASE_API_URL}/api/Services?ServiceId=${id}`);
     const data = await response.json();
     res.status(200).json(data.data);
   } catch (error) {
