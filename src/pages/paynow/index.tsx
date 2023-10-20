@@ -139,7 +139,10 @@ const PayNow = () => {
                     </div>
                     </div>
                     <div className="space-y-2 border-t-[3px] pt-10 flex justify-between">
-                      <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('/')}>
+                      <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md"
+                      
+                      
+                      onClick={() => Router.push(`/${searchParams.get('serviceType') ? `?serviceType=${searchParams.get('serviceType')}`:''}`)}>
                         Back
                       </button>
                       <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => PayNow()}>
