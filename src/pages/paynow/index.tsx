@@ -22,7 +22,7 @@ const PayNow = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [insuranceData, setInsuranceData] = useState([]);
-  const [storedInsurance, setStoredInsurance] = useState({});
+  const [storedInsuranceS, setStoredInsuranceS] = useState({});
   const [cost, setCost] = useState(0)
   const searchParams = useSearchParams();
   const apiUrl = '/api/paynow';
@@ -34,7 +34,7 @@ const PayNow = () => {
     if (typeof localStorage !== "undefined") {
       storedInsurance = localStorage.getItem("selectedInsurance");
       storedInsurance = JSON.parse(storedInsurance);
-      setStoredInsurance(storedInsurance)
+      setStoredInsuranceS(storedInsurance)
       visaInsurance = localStorage.getItem("visa"); 
      if(visaInsurance != '' && visaInsurance !== "undefined")
       {
@@ -68,7 +68,7 @@ const PayNow = () => {
         "clientSubServiceId": insuranceData.map((x:any)=>x.id),
         "quoteNo": '',
       }
-      console.log(request,'request', storedInsurance)
+      console.log(request,'request', storedInsuranceS)
       const response = await fetch(apiUrl + `?type=${serviceTypeParam}`, {
         method: "POST",
         headers: {
