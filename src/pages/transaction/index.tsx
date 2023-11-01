@@ -42,7 +42,11 @@ const Transaction = () => {
       body: JSON.stringify(request), // Convert the request object to JSON
     });
     const data = await response.json();
-    Router.push('/')
+    console.log(data)
+    setTimeout(()=>{
+      Router.push('/')
+    },1000)
+   
   }
 
  
