@@ -64,9 +64,9 @@ const PayNow = () => {
       let request = {
         "amount": cost,
         "clientSubServiceId": insuranceData.map((x:any)=>x.id),
-        "quoteNo": storedInsurance.quoteNo,
+        "quoteNo": '',
       }
-      console.log(request,'request')
+      console.log(request,'request', storedInsurance)
       const response = await fetch(apiUrl + `?type=${serviceTypeParam}`, {
         method: "POST",
         headers: {
