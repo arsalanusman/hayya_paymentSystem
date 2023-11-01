@@ -11,6 +11,7 @@ export default async (req, res) => {
       "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "hayyaTransactionId": "A23CD074-C9D0-431A-A29D-5286D782E8DC",
       "amount": req.body.amount,
+      "quoteNo": req.body.quoteNo,
       "promoCode": null,
       "serviceDetials": {
         "serviceId": serviceId,

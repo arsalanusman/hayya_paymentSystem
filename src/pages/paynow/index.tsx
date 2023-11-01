@@ -66,18 +66,17 @@ const PayNow = () => {
       let request = {
         "amount": cost,
         "clientSubServiceId": insuranceData.map((x:any)=>x.id),
-        "quoteNo":"",
+        "quoteNo":storedInsuranceS?.quoteNo,
       }
-      console.log(request,'request', storedInsuranceS)
-      // const response = await fetch(apiUrl + `?type=${serviceTypeParam}`, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json", // Set the request content type
-      //   },
-      //   body: JSON.stringify(request), // Convert the request object to JSON
-      // });
-      //const data = await response.json();
-      // Router.push(data.data)  
+      const response = await fetch(apiUrl + `?type=${serviceTypeParam}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the request content type
+        },
+        body: JSON.stringify(request), // Convert the request object to JSON
+      });
+      const data = await response.json();
+      Router.push(data.data)  
     } catch (error) {
       console.error('Error fetching data:', error);
   };
