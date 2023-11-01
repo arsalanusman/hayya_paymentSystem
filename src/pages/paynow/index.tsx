@@ -22,7 +22,7 @@ const PayNow = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [insuranceData, setInsuranceData] = useState([]);
-  const [storedInsuranceS, setStoredInsuranceS] = useState({});
+  const [storedInsuranceS, setStoredInsuranceS] = useState();
   const [cost, setCost] = useState(0)
   const searchParams = useSearchParams();
   const apiUrl = '/api/paynow';
