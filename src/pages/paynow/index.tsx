@@ -76,8 +76,8 @@ const PayNow = () => {
       //   },
       //   body: JSON.stringify(request), // Convert the request object to JSON
       // });
-      const data = await response.json();
-      Router.push(data.data)  
+      //const data = await response.json();
+      // Router.push(data.data)  
     } catch (error) {
       console.error('Error fetching data:', error);
   };
