@@ -20,7 +20,7 @@ const Transaction = () => {
   const { t } = useTranslation([FILE_NAME]);
   const tr = (key: string) => getTranslation(t, FILE_NAME, key);
   const apiUrl = '/api/downloadpolicyreport';
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const [pdfData, setPdfData] = useState(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -39,14 +39,9 @@ const Transaction = () => {
         },
         body: JSON.stringify(request),
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        setPdfUrl(data.url);
-      } else {
-        setFailed(true)
-        console.error('Failed to fetch PDF');
-      }
+      const data = await response.json();
+      setPdfData(data);
+      setFailed(true);
     } catch (error) {
       console.error('Error fetching PDF:', error);
     }
@@ -67,9 +62,9 @@ const Transaction = () => {
               />
             </div>
             <div className="bg-white border-solid border-2  border-gray-100 rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
-              {pdfUrl ? (
+              {pdfData ? (
                   <div>
-                    <iframe src={pdfUrl} title="PDF" width='100%' height="600px" />
+                    <iframe src={`data:application/pdf;base64,${pdfData}`} title="PDF" width='100%' height="600px" />
                   </div>
                 ) : !failed ? <Image
                 src="/img/loading.gif"
