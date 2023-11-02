@@ -1,7 +1,7 @@
 export default async (req, res) => {
   try {
     // Make the request to the external service to get the PDF data
-    const response = await fetch(`${process.env.BASE_API_URL}/api/Services/DownloadPolicyReport?TransactionId=169CF711-9C04-4CA6-AE79-F2D34B42006E`, {
+    const response = await fetch(`${process.env.BASE_API_URL}/api/Services/DownloadPolicyReport?TransactionId=${req.body.transactionId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
