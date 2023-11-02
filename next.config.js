@@ -17,6 +17,9 @@ const nextConfig = {
   typescript: {
     tsconfigPath,
   },
+  publicRuntimeConfig: {
+    publicFolder: '/public',
+  },
   webpack: config => {
     config.resolve.modules.push(path.resolve('./'))
 

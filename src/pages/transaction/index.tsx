@@ -44,8 +44,8 @@ const Transaction = () => {
     const data = await response.json();
     console.log(data)
     setTimeout(()=>{
-      Router.push('/')
-    },1000)
+      Router.push(`/download_transaction/?transactionId=${transId}`)
+    },100)
    
   }
 
