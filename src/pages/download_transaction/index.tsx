@@ -72,10 +72,12 @@ const Transaction = () => {
                 height={120}
                 alt="Picture of the author"
                 className="text-center mx-auto mb-3"
-              /> :  <Image src="/img/cross.png"  width={180}
+              /> :  <> <Image src="/img/cross.png"  width={180}
               height={120}
               alt="Picture of the author"
-              className="text-center mx-auto mt-10" /> }
+              className="text-center mx-auto mt-10" /><h3 className=" text-[30px] text-center font-[500] w-full mt-10">
+                Transaction has Failed
+            </h3></> }
               <div className="block">
                 <div className="space-y-2 pt-2 flex justify-center">
                   <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('/?serviceType=moi')}>

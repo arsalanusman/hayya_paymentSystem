@@ -17,6 +17,7 @@ const Transaction = () => {
   const Router = useRouter()
   const searchParams =  useSearchParams()
   const id = searchParams.get('id')
+  const [isLoading, setIsLoading] = useState(true);
   const vendorCode = searchParams.get('vendorCode')
   const status = searchParams.get('status')
   const transId = searchParams.get('transId')
@@ -29,6 +30,7 @@ const Transaction = () => {
   }, []);
 
   const sendTransaction = async () => {
+    setIsLoading(false)
     let request = {
       "transactionId": transId,
       "externalPartyId": id,
@@ -42,8 +44,8 @@ const Transaction = () => {
       body: JSON.stringify(request), // Convert the request object to JSON
     });
     const data = await response.json();
-    console.log(data)
     setTimeout(()=>{
+      setIsLoading(true)
       Router.push(`/download_transaction/?transactionId=${transId}`)
     },100)
    
@@ -56,6 +58,7 @@ const Transaction = () => {
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
               <div className="ease-in duration-300">
+          
                 <div className="text-center mx-auto mt-10 mb-6">
                     <Image
                       src="/img/logo_old.png"
@@ -66,6 +69,8 @@ const Transaction = () => {
                     />
                   </div>
                 <div className="bg-white border-solid border-2  border-gray-100 rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
+                {isLoading ? (
+                <>
                 {status == 'Paid' ?   <Image src="/img/check.png"  width={180}
                       height={120}
                       alt="Picture of the author"
@@ -92,8 +97,16 @@ const Transaction = () => {
                       </button>}
                     </div>
                   </div>
+                  </>): <Image
+                    src="/img/loading.gif"
+                    width={180}
+                    height={120}
+                    alt="Picture of the author"
+                    className="text-center mx-auto mb-3"
+                  />}
                 </div>
               </div>
+              
             </div>
           </div>
         </>
