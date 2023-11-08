@@ -8,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { HayyaWithMe } from "@/helper/enums/hayya-with-me";
 import InsuranceCard from "@/components/InsuranceCard";
 import { useRouter, useSearchParams } from "next/navigation";
-
+import { Checkbox } from "@/components/ui/checkbox"
 type Props = {};
 
 const FILE_NAME = "hayya-with-me";
@@ -103,6 +103,65 @@ const PayNow = () => {
                   <h3 className=" text-[22px] font-[500] w-full mb-10">
                     Summary
                   </h3>
+                
+                  <div className="mb-6">
+                  <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
+                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
+                        Payment Summary
+                      </h3>
+                      <p>Here’re your payment details</p>
+                  </div>
+
+                  <div className="bg-[#F8F8F8] border border-[#e1e1e1] p-6 mb-10">
+                     <div className="flex justify-between mb-6">
+                      <div className="font-semibold">Items</div>
+                      <div className=" text-[#60737D]">Total</div>
+                     </div>
+                     <div className="flex justify-end items-center  mb-10 gap-10">
+                      <div className="l">VISA Fees</div>
+                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
+                      <div className="">150.00</div>
+                     </div>
+                     <div className="flex justify-end items-center  mb-10 gap-10">
+                      <div className="l">Medical Insurance Fee</div>
+                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
+                      <div className="">150.00</div>
+                     </div>
+                     <div className="flex justify-end items-center  mb-10 gap-10">
+                      <div className="l">Travel Insurance Fee</div>
+                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
+                      <div className="">150.00</div>
+                     </div>
+                     <div className="flex justify-end items-center  mb-10 gap-10">
+                      <div className="l">Security Deposit</div>
+                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
+                      <div className="">150.00</div>
+                     </div>
+                      <div className=" flex justify-end"><button className="bg-[#D5CC65] px-8 p-4 flex justify-between gap-10 "><div>Total (QAR)</div>  <div>1,000.00</div></button>
+                      </div>
+                  </div>
+                  <div className="mb-6">
+                  <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
+                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
+                      Payment
+                      </h3>
+                     
+                  </div>
+                  <div className="bg-[#F8F8F8] border border-[#e1e1e1] p-6 mb-10">
+                  <div className="flex justify-between mb-6">
+                      <div className="font-semibold">TOTAL</div>
+                      <div className="font-semibold ">1,000 .QAR</div>
+                     </div>
+                     <div className=" text-center py-32">Payment Gateway Widget</div>
+                    </div>
+                    <div className="mb-6">
+                  <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
+                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
+                      Terms & Conditions
+                      </h3>
+                      <div className="flex gap-2 items-center"><Checkbox />I have read and understood the <a href=""className=" underline text-[#03A290]">Terms & Conditions.</a></div>
+                  </div>
+                  <br></br><br></br>  <br></br><br></br>  <br></br><br></br>
                   <div className="block">
                     <ul className="bg-gray-100 p-4">
                     {isLoading ? (

@@ -36,7 +36,7 @@ const InsuranceCard = ({ insuranceData, isSelected, onClick }:any) => {
         isSelected ? 'border-[#d5cc65]' : ''
       }`}
     >
-      <div className="">
+      <div className="relative">
         <div className="mb-5 grid grid-cols-2 sm:w-full ">
           <div className="logo border-[3px] border-[#3C7783] sm:text-center">
             <img src={insuranceData?.logo} className="md:w-20 mx-auto" alt={insuranceData.name} />
@@ -81,17 +81,18 @@ const InsuranceCard = ({ insuranceData, isSelected, onClick }:any) => {
             {/* <span className="text-xs block mt-1" onClick={()=>openModal(1)}>{insuranceData.subService}</span> */}
           </div>
         </div>
-          {
-            isModalOpen && <div>
-              <span className="text-xs text-[#3C7783] uppercase font-[600]">Information</span>
-              <ol className='list-disc pl-5'>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. </li>
-                <li>eiusmod tempor incididunt ut labore et dolore magna aliqua. </li>
-                <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-              </ol>
-              </div>
-          }
-
+        {isModalOpen && (
+          <div className={`information-overlay ${
+            isSelected ? 'border-[#d5cc65]' : ''
+          }`}>
+            <span className="text-xs text-[#3C7783] uppercase font-[600]">Information</span>
+            <ol className='list-disc pl-5'>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+            </ol>
+          </div>
+        )}
       </div>
     </li>
   );
