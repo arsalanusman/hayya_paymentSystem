@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
  
+.Satoshi {
+  font-family: 'Satoshi', sans-serif;
+}
+.Poppins {
+  font-family: 'Poppins', sans-serif;
+
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -167,4 +176,241 @@ background-color: #881A38;
   border: 3px solid #3C7783;
   border-top: 0px;
   margin-top: 10px;
+}
+.dotted {position: relative;}
+
+.dotted:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #3c7783;
+    position: absolute;
+    top: -7px;
+    left: -3px;
+    border-radius: 100px;
+}
+.providers-boxes {
+  border: 2px solid #3C7783;
+  width: auto;
+  padding: 20px 30px;
+  font-family: 'Satoshi', sans-serif;
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+.providers-boxes:hover {
+  background: #3c77830a;
+}
+.providers-main {
+  display: grid;
+  grid-template-columns: 24% 24% 24% 24%;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.providers-boxes-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0px;
+}
+
+.providers-boxes-header button {
+  background: url(/img/provider-but.png) center no-repeat;
+  background-size: cover;
+  padding: 11px 30px;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  top: -10px;
+  transition: all 0.5s ease;
+}
+.providers-boxes-header button:hover {
+  background: url(/img/provider-but-selected.png) center no-repeat;
+  color: #fff;
+}
+.providers-boxes h1 {
+  color: #252525;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  width: 70%;
+ 
+}
+
+.providers-boxes-premium .box button {
+  text-align: left;
+  position: relative;
+}
+
+.providers-boxes-premium .box button h4 {
+  color: #3C7783;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.providers-boxes-premium .box button h5 {
+  color: #252525;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.providers-boxes-premium .box button h5 span {
+  color: #252525;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.providers-boxes-premium .box button svg {
+  fill: currentColor;
+}
+
+.providers-boxes-premium .box button .ChevronDownBack {
+  background: url(/img/premium-but.png);
+  background-size: cover;
+  padding: 8px;
+  position: absolute;
+  right: -7px;
+  width: 30px;
+  height: 30px;
+}
+
+.providers-boxes-premium .box button:hover .ChevronDownBack {
+  background: url(/img/premium-but-hover.png);
+  background-size: cover;
+  padding: 8px;
+  position: absolute;
+  right: -7px;
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s ease;
+}
+.providers-boxes-premium .box button:hover {
+  text-decoration: none;
+}
+.Summary-boxes {display: grid;grid-template-columns: 20% 70% 10%;justify-content: space-between;align-items: center;margin-bottom: 24px;font-family: 'Satoshi', sans-serif;font-size: 16px;}
+
+.Summary-boxes .three {
+    text-align: right;
+}
+
+.Summary-boxes .two hr {
+    border-color: #ccc;
+}
+button.success-continue {
+  background: url(/img/continue.png);
+  background-size: cover;
+  padding: 10px 98px;
+  font-size: 16px;
+}
+.Payment-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.Payment-heading img {
+    position: absolute;
+    left: 0;
+}
+
+.Payment-heading span {
+    color: #1D4E59;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
+.Conditions-sec {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+@media only screen and (max-width: 1400px){
+  .providers-boxes h1 {
+   
+    width: 100%;
+}
+.providers-boxes{
+
+  padding: 20px 20px;
+}
+}
+
+@media only screen and (max-width: 1200px){
+  .providers-main {
+  
+    grid-template-columns: 32% 32% 32%;
+    gap: 18px;
+  
+}
+}
+
+@media only screen and (max-width: 1000px){
+
+  .providers-main {
+    grid-template-columns: 48% 48%;
+    gap: 18px;
+}
+}
+
+@media only screen and (max-width: 800px){
+  .providers-main {
+    grid-template-columns: 100%;
+    gap: 18px;
+}
+.Summary-boxes {
+ 
+  grid-template-columns: 50% 16% 30%;
+ 
+}
+.Payment-heading img {
+ 
+  width: 14px;
+}
+
+}
+
+
+
+
+
+@media only screen and (max-width: 480px){
+.Providers-headings {
+  padding-left: 0px;
+}
+
+.Providers-headings span {
+  font-size: 12px;
+  margin-left: -34px;
+  padding: 5px 10px;
+  background-size: cover;
+  margin-top: 1px;
+}
+
+.Providers-headings h3 {
+  font-size: 20px;
+}
+
+.Providers-headings p {
+  font-size: 14px;
+}
+.Payment-heading span {
+  
+  font-size: 20px;
+ 
+}
+.Conditions-sec {
+ 
+  justify-content: flex-start;
+  align-items: flex-start;
+ 
+  flex-direction: column;
+}
 }

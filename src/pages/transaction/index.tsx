@@ -53,26 +53,26 @@ const Transaction = () => {
 
  
   return (
-    <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#0C4532] to-[#327886] to-100%  mx-auto  h-full w-full ">
+    <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#EEEEE5] to-[#EEEEE5] to-100%  mx-auto  h-full w-full ">
       <>
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
               <div className="ease-in duration-300">
           
                 <div className="text-center mx-auto mt-10 mb-6">
-                    <Image
+                    {/* <Image
                       src="/img/logo_old.png"
                       width={180}
                       height={120}
                       alt="Picture of the author"
                       className="text-center mx-auto mb-3"
-                    />
+                    /> */}
                   </div>
-                <div className="bg-white border-solid border-2  border-gray-100 rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
+                <div className=" border-solid    rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
                 {isLoading ? (
                 <>
-                {status == 'Paid' ?   <Image src="/img/check.png"  width={180}
-                      height={120}
+                {status == 'Paid' ?   <Image src="/img/successimg.png"  width={100}
+                      height={100}
                       alt="Picture of the author"
                       className="text-center mx-auto mt-10" /> : 
                       <Image src="/img/cross.png"  width={180}
@@ -81,16 +81,16 @@ const Transaction = () => {
                       className="text-center mx-auto mt-10" /> }
 
 
-                  <h3 className=" text-[30px] text-center font-[500] w-full mt-10">
+                  <h3 className="Satoshi text-[40px] text-center font-[700] w-full mt-10 text-[#004F62] mb-4">
 
                     
-                    {status == 'Paid' ? `Thank You!` : `Payment Failed!`}
+                    {status == 'Paid' ? `Success!` : `Payment Failed!`}
                   </h3>
-                  <p className=" text-[18px] text-center font-[500] w-full mb-10">{status == 'Paid' ? `our payment has been received successfully...` : `Please review your billing information and make changes if necessary.`}</p>
+                  <p className=" text-[24px] text-center font-[400]  mb-10 w-[100%] sm:w-[26%] m-auto">{status == 'Paid' ? `Your payment was  successful` : `Please review your billing information and make changes if necessary.`}</p>
                   <div className="block">
                     <div className="space-y-2 pt-2 flex justify-center">
-                    {status == 'Paid' ?  <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => sendTransaction()}>
-                       Ok
+                    {status == 'Paid' ?  <button className="success-continue" onClick={() => sendTransaction()}>
+                    Continue
                       </button> :
                       <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md"  onClick={() => Router.push('/?serviceType=moi')}>
                         Back

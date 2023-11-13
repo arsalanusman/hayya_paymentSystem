@@ -84,63 +84,66 @@ const PayNow = () => {
   }
 
   return (
-    <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#0C4532] to-[#327886] to-100%  mx-auto  h-full w-full ">
+    <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#EEEEE5] to-[#EEEEE5] to-100%  mx-auto  h-full w-full ">
       
         <>
-          <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-6">
+          <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-0 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
               <div className="ease-in duration-300">
                 <div className="text-center mx-auto mt-10 mb-6">
-                    <Image
+                    {/* <Image
                       src="/img/logo_old.png"
                       width={180}
                       height={120}
                       alt="Picture of the author"
                       className="text-center mx-auto mb-3"
-                    />
+                    /> */}
                   </div>
                 <div className="bg-white border-solid border-2  border-gray-100 rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
-                  <h3 className=" text-[22px] font-[500] w-full mb-10">
+                  {/* <h3 className=" text-[22px] font-[500] w-full mb-10">
                     Summary
-                  </h3>
+                  </h3> */}
                 
-                  <div className="mb-6">
+                  <div className="mb-6 pt-10 Providers-headings">
                   <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
                       <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
-                        Payment Summary
+                       <div className="Poppins"> Payment Summary</div>
                       </h3>
-                      <p>Here’re your payment details</p>
+                     <p className="text-[18px] Satoshi">Here’re your payment details</p>
                   </div>
-
-                  <div className="bg-[#F8F8F8] border border-[#e1e1e1] p-6 mb-10">
-                     <div className="flex justify-between mb-6">
-                      <div className="font-semibold">Items</div>
-                      <div className=" text-[#60737D]">Total</div>
-                     </div>
-                     <div className="flex justify-end items-center  mb-10 gap-10">
-                      <div className="l">VISA Fees</div>
-                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
-                      <div className="">150.00</div>
-                     </div>
-                     <div className="flex justify-end items-center  mb-10 gap-10">
-                      <div className="l">Medical Insurance Fee</div>
-                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
-                      <div className="">150.00</div>
-                     </div>
-                     <div className="flex justify-end items-center  mb-10 gap-10">
-                      <div className="l">Travel Insurance Fee</div>
-                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
-                      <div className="">150.00</div>
-                     </div>
-                     <div className="flex justify-end items-center  mb-10 gap-10">
-                      <div className="l">Security Deposit</div>
-                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
-                      <div className="">150.00</div>
-                     </div>
-                      <div className=" flex justify-end"><button className="bg-[#D5CC65] px-8 p-4 flex justify-between gap-10 "><div>Total (QAR)</div>  <div>1,000.00</div></button>
+                  <div className="bg-[#F8F8F8] border border-[#e1e1e1]  mb-10 pb-10 ">
+                        <div className=" p-6">
+                          <div className="flex justify-between mb-6">
+                            <div className="font-semibold text-[18px]">Items</div>
+                            <div className=" text-[#60737D] text-[18px]">Total</div>
+                          </div>
+                          <div className="Summary-boxes">
+                            <div className="one">VISA Fees</div>
+                            <div className="two"> <hr></hr></div>
+                            <div className="three">150.00</div>
+                          </div>
+                          <div className="Summary-boxes">
+                            <div className="one">Medical Insurance Fee</div>
+                            <div className="two"> <hr></hr></div>
+                            <div className="three">150.00</div>
+                          </div>
+                          <div className="Summary-boxes">
+                            <div className="one">Travel Insurance Fee</div>
+                            <div className="two"> <hr></hr></div>
+                            <div className="three">150.00</div>
+                          </div>
+                          <div className="Summary-boxes">
+                            <div className="one">Security Deposit</div>
+                            <div className="two"> <hr></hr></div>
+                            <div className="three">150.00</div>
+                          </div>
+                          
+                        </div>                      
+                      <div className=" flex justify-end"><button className="bg-[#D5CC65] px-8 p-4 flex justify-between gap-10 "><div>Total (QAR)</div>  <div><b>1,000.00</b></div></button>
                       </div>
-                  </div>
-                  <div className="mb-6">
+                    </div>
+
+                  <div className="mb-6 Providers-headings">
                   <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
                       <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
                       Payment
@@ -150,16 +153,16 @@ const PayNow = () => {
                   <div className="bg-[#F8F8F8] border border-[#e1e1e1] p-6 mb-10">
                   <div className="flex justify-between mb-6">
                       <div className="font-semibold">TOTAL</div>
-                      <div className="font-semibold ">1,000 .QAR</div>
+                      <div className="font-semibold Satoshi">1,000 .QAR</div>
                      </div>
-                     <div className=" text-center py-32">Payment Gateway Widget</div>
+                     <div className=" text-center py-32 Satoshi font-[500]">Payment Gateway Widget</div>
                     </div>
-                    <div className="mb-6">
+                    <div className="mb-6 Providers-headings">
                   <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
-                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
-                      Terms & Conditions
+                      <span className=" bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
+                       <div className="Poppins">Terms & Conditions</div>
                       </h3>
-                      <div className="flex gap-2 items-center"><Checkbox />I have read and understood the <a href=""className=" underline text-[#03A290]">Terms & Conditions.</a></div>
+                      <div className="Conditions-sec"><div className="flex gap-[4px] items-center"><Checkbox /> <div>I have read and understood the </div></div><a href=""className=" underline text-[#03A290] font-[500]">Terms & Conditions.</a></div>
                   </div>
                   <br></br><br></br>  <br></br><br></br>  <br></br><br></br>
                   <div className="block">
