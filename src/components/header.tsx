@@ -46,14 +46,14 @@ export default function Header() {
               alt="Picture of the author"
             /><p className="p-1"> John Smith</p></Link>
           </li>
-          {/* <li className="flex justify-center align-middle ">
+          <li className="flex justify-center align-middle ">
             <Image
               src="/img/profile.png"
               width={8}
               height={8}
               alt="Picture of the author"
             />
-          </li> */}
+          </li>
         </ul>
         </div>
         <div className="sm:invisible mobile_menu">
