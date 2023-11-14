@@ -1,17 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.cdnfonts.com/css/satoshi');
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
  
-.Satoshi {
-  font-family: 'Satoshi', sans-serif;
-}
+
 .Poppins {
   font-family: 'Poppins', sans-serif;
 
 }
+
+
+@font-face {
+  font-family: 'Satoshi-Variable';
+  src: url('../fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('../fonts/Satoshi-Variable.woff') format('woff'),
+       url('../fonts/Satoshi-Variable.ttf') format('truetype');
+       font-weight: 300 900;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 900.0;
+*
+* available axes:
+
+* 'wght' (range from 300.0 to 900.0)
+
+*/
+
+@font-face {
+  font-family: 'Satoshi-VariableItalic';
+  src: url('../fonts/Satoshi-VariableItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-VariableItalic.woff') format('woff'),
+       url('../fonts/Satoshi-VariableItalic.ttf') format('truetype');
+       font-weight: 300 900;
+       font-display: swap;
+       font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-Light';
+  src: url('../fonts/Satoshi-Light.woff2') format('woff2'),
+       url('../fonts/Satoshi-Light.woff') format('woff'),
+       url('../fonts/Satoshi-Light.ttf') format('truetype');
+       font-weight: 300;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-LightItalic';
+  src: url('../fonts/Satoshi-LightItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-LightItalic.woff') format('woff'),
+       url('../fonts/Satoshi-LightItalic.ttf') format('truetype');
+       font-weight: 300;
+       font-display: swap;
+       font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-Regular';
+  src: url('../fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('../fonts/Satoshi-Regular.woff') format('woff'),
+       url('../fonts/Satoshi-Regular.ttf') format('truetype');
+       font-weight: 400;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-Italic';
+  src: url('../fonts/Satoshi-Italic.woff2') format('woff2'),
+       url('../fonts/Satoshi-Italic.woff') format('woff'),
+       url('../fonts/Satoshi-Italic.ttf') format('truetype');
+       font-weight: 400;
+       font-display: swap;
+       font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-Medium';
+  src: url('../fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('../fonts/Satoshi-Medium.woff') format('woff'),
+       url('../fonts/Satoshi-Medium.ttf') format('truetype');
+       font-weight: 500;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-MediumItalic';
+  src: url('../fonts/Satoshi-MediumItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-MediumItalic.woff') format('woff'),
+       url('../fonts/Satoshi-MediumItalic.ttf') format('truetype');
+       font-weight: 500;
+       font-display: swap;
+       font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-Bold';
+  src: url('../fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('../fonts/Satoshi-Bold.woff') format('woff'),
+       url('../fonts/Satoshi-Bold.ttf') format('truetype');
+       font-weight: 700;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-BoldItalic';
+  src: url('../fonts/Satoshi-BoldItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-BoldItalic.woff') format('woff'),
+       url('../fonts/Satoshi-BoldItalic.ttf') format('truetype');
+       font-weight: 700;
+       font-display: swap;
+       font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-Black';
+  src: url('../fonts/Satoshi-Black.woff2') format('woff2'),
+       url('../fonts/Satoshi-Black.woff') format('woff'),
+       url('../fonts/Satoshi-Black.ttf') format('truetype');
+       font-weight: 900;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Satoshi-BlackItalic';
+  src: url('../fonts/Satoshi-BlackItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-BlackItalic.woff') format('woff'),
+       url('../fonts/Satoshi-BlackItalic.ttf') format('truetype');
+       font-weight: 900;
+       font-display: swap;
+       font-style: italic;
+}
+
+
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -190,21 +336,22 @@ background-color: #881A38;
     border-radius: 100px;
 }
 .providers-boxes {
-  border: 2px solid #3C7783;
   width: auto;
-  padding: 20px 30px;
-  font-family: 'Satoshi', sans-serif;
+  padding: 20px 40px;
   transition: all 0.3s ease;
   height: fit-content;
+  border-radius: 16px;
+  border: 2px solid #D2D2D2;
 }
 .providers-boxes:hover {
   background: #3c77830a;
 }
 .providers-main {
   display: grid;
-  grid-template-columns: 24% 24% 24% 24%;
+  grid-template-columns: 32% 32% 32%;
   justify-content: space-between;
-  gap: 15px;
+  gap: 20px;
+  margin: 50px 0px;
 }
 
 .providers-boxes-header {
@@ -214,25 +361,26 @@ background-color: #881A38;
 }
 
 .providers-boxes-header button {
-  background: url(/img/provider-but.png) center no-repeat;
-  background-size: cover;
-  padding: 11px 30px;
+  padding: 14px 34px;
   font-size: 14px;
-  font-weight: 500;
   position: relative;
   top: -10px;
   transition: all 0.5s ease;
+  background: #fff;
+  font-family: 'Satoshi-Medium';
+  border-radius: 16px;
+  border: 2px solid #D2D2D2;
 }
 .providers-boxes-header button:hover {
-  background: url(/img/provider-but-selected.png) center no-repeat;
-  color: #fff;
+  background: #FFBF00;
+  
 }
 .providers-boxes h1 {
   color: #252525;
   font-size: 18px;
-  font-weight: 700;
   line-height: normal;
   width: 70%;
+  font-family: 'Satoshi-Bold';
  
 }
 
@@ -244,53 +392,43 @@ background-color: #881A38;
 .providers-boxes-premium .box button h4 {
   color: #3C7783;
   font-size: 12px;
-  font-weight: 500;
   line-height: 24px;
   text-transform: uppercase;
+  font-family: 'Satoshi-Medium';
 }
 
 .providers-boxes-premium .box button h5 {
   color: #252525;
   font-size: 16px;
-  font-weight: 700;
   line-height: 24px;
+  font-family: 'Satoshi-Bold';
 }
 
 .providers-boxes-premium .box button h5 span {
   color: #252525;
   font-size: 12px;
-  font-weight: 700;
+  font-family: 'Satoshi-Bold';
   line-height: 24px;
 }
 
 .providers-boxes-premium .box button svg {
-  fill: currentColor;
+  width: 20px;
+  height: 20px;
 }
 
 .providers-boxes-premium .box button .ChevronDownBack {
-  background: url(/img/premium-but.png);
-  background-size: cover;
-  padding: 8px;
+  
   position: absolute;
   right: -7px;
   width: 30px;
   height: 30px;
 }
 
-.providers-boxes-premium .box button:hover .ChevronDownBack {
-  background: url(/img/premium-but-hover.png);
-  background-size: cover;
-  padding: 8px;
-  position: absolute;
-  right: -7px;
-  width: 30px;
-  height: 30px;
-  transition: all 0.5s ease;
-}
+
 .providers-boxes-premium .box button:hover {
   text-decoration: none;
 }
-.Summary-boxes {display: grid;grid-template-columns: 20% 70% 10%;justify-content: space-between;align-items: center;margin-bottom: 24px;font-family: 'Satoshi', sans-serif;font-size: 16px;}
+.Summary-boxes {display: grid;grid-template-columns: 20% 70% 10%;justify-content: space-between;align-items: center;margin-bottom: 24px;font-size: 16px;}
 
 .Summary-boxes .three {
     text-align: right;
@@ -310,70 +448,278 @@ button.success-continue {
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 60px;
+    flex-direction: column;
+    gap: 16px;
+    margin: 50px 0px 40px 0px;
 }
 
-.Payment-heading img {
-    position: absolute;
-    left: 0;
-}
+
 
 .Payment-heading span {
-    color: #1D4E59;
+  color: #fff;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 40px;
+    font-size: 26px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.13px;
+    font-family: 'Satoshi-Bold';
+    font-feature-settings: 'salt' on;
 }
 .Conditions-sec {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+  font-family: 'Satoshi-Medium';
+  margin: 60px 0px 0px 0px;
+}
+
+
+.tabs-back {
+  box-shadow: 0px 50px 200px 0px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  border-radius: 24px;
+  padding: 100px;
+}
+.TabsList-but {
+  width: 100%;
+  background: none;
+  border: 0;
+  gap: 20px;
+ 
+}
+
+.TabsList-but button {
+  width: 100%;
+  border: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 171.429% */
+  letter-spacing: 0.112px;
+  font-family: 'Satoshi-Medium';
+  color: #222222 !important;
+  border: 1px solid #DEDEDE;
+  border-radius: 16px;
+  padding: 16px 32px;
+}
+
+
+.TabsList-but [data-state="active"] {
+  background: #D5CC65 !important;
+  font-family: 'Satoshi-Bold';
+}
+
+.providers-boxes-header .img-box img {
+  border: 2px solid #317684;
+  border-radius: 16px;
+  padding: 1px;
+}
+.AccordionContent {
+  font-family: 'Satoshi-Medium';
+}
+.buttonexistcont {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.buttonexistcont button {
+  width: 100%;
+  border: 1px solid #222222;
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.112px;
+  font-family: 'Satoshi-Bold';
+  transition: all 0.4s ease;
+}
+
+.buttonexistcont button:hover {
+  background: #d5cc65;
+  border: 1px solid #d5cc65;
+}
+.payment-info {
+  margin: 50px 0px;
+}
+
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #D2D2D2;
+  padding-bottom: 14px;
+  padding-right: 10px;
+}
+
+.payment-item .lft {
+  font-size: 16px;
+  font-style: normal;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.112px;
+  font-family: 'Satoshi-Black';
+}
+
+.payment-item .rgt {
+  color: #74848C;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 20px; /* 125% */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: 'Satoshi-Bold';
+}
+.payment-itemboxes {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: #F2F5F6;
+  padding: 18px 30px;
+  margin: 14px 0px;
+}
+
+.payment-itemboxes .lft {
+  font-size: 16px;
+  font-style: normal;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: 0.112px;
+  font-family: 'Satoshi-Medium';
+  font-feature-settings: 'salt' on;
+}
+
+.payment-itemboxes .rgt {
+  font-feature-settings: 'salt' on;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: 0.112px;
+  font-family: 'Satoshi-Bold';
+}
+.payment-info .Total {
+  float: right;
+  border-radius: 10px;
+  background: #D5CC65;
+  display: flex;
+  gap: 40px;
+  padding: 18px 60px;
+  font-family: 'Satoshi-Black';
+  font-feature-settings: 'salt' on;
+  letter-spacing: 0.126px;
+  font-size: 18px;
+  transition: all 0.4s ease;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.payment-option {
+  clear: both;
+  border: 1px solid rgba(164, 164, 164, 0.35);
+  background: #F8F8F8;
+  height: 450px;
+  font-family: 'Satoshi-Medium';
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.DialogContent p {
+  font-size: 16px;
+  font-style: normal;
+  line-height: 22px; /* 171.429% */
+  letter-spacing: 0.112px;
+  color: #222222;
+  font-feature-settings: 'salt' on;
+  font-family: 'Satoshi-Medium';
+  margin: 10px 0px;
+}
+
+.DialogContent-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 30px 20px 0px;
+  font-family: 'Satoshi-Bold';
+  color: #222222;
+  gap: 20px;
+}
+
+.DialogContent-buttons button.Back {
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  text-decoration: underline;
+  transition: all 0.4s ease;
+}
+
+.DialogContent-buttons button.Continue {
+  font-size: 16px;
+  width: 100%;
+  background: #D5CC65;
+  padding: 18px 0px;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.DialogContent-buttons button.Back:hover {
+  background: #D5CC65;
+  border-radius: 16px;
+}
+
+.DialogContent-buttons button.Continue:hover {
+  background: #000;
+  color: #fff;
+}
+.success-main {
+  background: url(/img/account-created-bg2.svg) center no-repeat;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.success-main .text {
+  text-align: center;
+  margin-top: 290px;
+  font-family: 'Satoshi-Bold';
+  color: #fff;
+}
+
+.success-main .text h2 {
+  font-size: 40px;
+  font-style: normal;
+  line-height: 48px; /* 120% */
+  letter-spacing: 0.12px;
+  font-feature-settings: 'salt' on;
+}
+
+.success-main .text p {
+  font-size: 22px;
+  font-style: normal;
+  line-height: 32px; /* 145.455% */
+  letter-spacing: 0.132px;
+  font-feature-settings: 'salt' on;
 }
 @media only screen and (max-width: 1400px){
-  .providers-boxes h1 {
-   
-    width: 100%;
-}
-.providers-boxes{
-
-  padding: 20px 20px;
-}
+.providers-boxes h1 {width: 100%;}
+.providers-boxes{  padding: 20px 20px;}
 }
 
 @media only screen and (max-width: 1200px){
-  .providers-main {
-  
-    grid-template-columns: 32% 32% 32%;
-    gap: 18px;
-  
-}
+.providers-main {grid-template-columns: 32% 32% 32%;    gap: 18px; }
+.tabs-back {  padding: 50px;}
+.providers-boxes-header button{padding: 10px 20px;}
 }
 
 @media only screen and (max-width: 1000px){
 
-  .providers-main {
-    grid-template-columns: 48% 48%;
-    gap: 18px;
-}
+.providers-main {    grid-template-columns: 48% 48%;    gap: 18px;}
 }
 
 @media only screen and (max-width: 800px){
-  .providers-main {
-    grid-template-columns: 100%;
-    gap: 18px;
-}
-.Summary-boxes {
- 
-  grid-template-columns: 50% 16% 30%;
- 
-}
-.Payment-heading img {
- 
-  width: 14px;
-}
+.providers-main {    grid-template-columns: 100%;    gap: 18px;}
+.Summary-boxes {   grid-template-columns: 50% 16% 30%; }
+.Payment-heading img {   width: 14px;}
 
 }
 
@@ -382,35 +728,17 @@ button.success-continue {
 
 
 @media only screen and (max-width: 480px){
-.Providers-headings {
-  padding-left: 0px;
-}
-
-.Providers-headings span {
-  font-size: 12px;
-  margin-left: -34px;
-  padding: 5px 10px;
-  background-size: cover;
-  margin-top: 1px;
-}
-
-.Providers-headings h3 {
-  font-size: 20px;
-}
-
-.Providers-headings p {
-  font-size: 14px;
-}
-.Payment-heading span {
-  
-  font-size: 20px;
- 
-}
-.Conditions-sec {
- 
-  justify-content: flex-start;
-  align-items: flex-start;
- 
-  flex-direction: column;
-}
+.Providers-headings {  padding-left: 0px;}
+.Providers-headings span {  font-size: 12px;  margin-left: -34px;  padding: 5px 10px;  background-size: cover;  margin-top: 1px;}
+.Providers-headings h3 {  font-size: 20px;}
+.Providers-headings p {  font-size: 14px;}
+.Payment-heading span {    font-size: 20px; }
+.Conditions-sec {   justify-content: flex-start;  align-items: flex-start;  flex-direction: column;}
+.TabsList-but {  gap: 5px;  flex-direction: column !important;}
+.tabs-back {  padding: 60px 30px;}
+.buttonexistcont {  gap: 6px;  flex-direction: column;}
+.payment-info {   padding-top: 50px;}
+.payment-info .Total {  float: none;  width: 100%; }
+.payment-itemboxes .lft {  font-size: 14px;  }
+.payment-itemboxes .rgt {    font-size: 12px;}
 }

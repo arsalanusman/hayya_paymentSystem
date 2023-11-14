@@ -15,6 +15,14 @@ import {
   AccordionItem,
   AccordionTrigger, 
 } from "@/components/ui/accordion-provider"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 type Props = {};
 
 const FILE_NAME = "hayya-with-me";
@@ -106,7 +114,7 @@ const Payment = () => {
   console.log(selectedCard)
   
   return (
-    <div className="container-fluid pb-10 px-4 sm:px-20  bg-[#EEEEE5]  mx-auto  h-full w-full ">
+    <div className="container-fluid pb-10 px-4 sm:px-20  bg-[#327886]  mx-auto  h-full w-full ">
         
         <>
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-0 lg:px-8 lg:py-6">
@@ -114,432 +122,305 @@ const Payment = () => {
               <div className="ease-in duration-300">
                 <div className="Payment-heading">
                    <Image
-                      src="/img/arrow-left.png"
-                      width={28}
-                      height={28}
+                      src="/img/p-star.svg"
+                      width={32}
+                      height={32}
                       alt="Picture of the author"
                       className=""
                     /> <span>Hayya Payment</span>
-                </div>
-                  <Tabs value={activeTab} defaultValue="account" className="">
-                    <TabsList className="rounded-none table mx-auto bg-transparent p-0 relative z-20">
-                      <TabsTrigger className={`bg-white p-3 px-10 mr-4 rounded-none rounded-t-[10px] bg-[#3C7783] text-[#fff] border-2 border-b-0 border-[#3C7783] font-semibold w-full sm:w-auto` } value="account" onClick={()=>setActiveTab('account')}>1. Service Provides</TabsTrigger>
-                      <TabsTrigger className={`bg-white p-3 px-10 rounded-none rounded-t-[10px] bg-[#3C7783] border-2 text-[#fff] border-2 border-b-0 border-[#3C7783] font-semibold w-full sm:w-auto` }  value="payment" >2. Payment Summary</TabsTrigger>
+                </div >
+                <div className="tabs-back">
+                  <Tabs defaultValue="account" className=" ">
+                    <TabsList className="TabsList-but bg-transparent">
+                      <TabsTrigger value="account">Service Provider</TabsTrigger>
+                      <TabsTrigger value="password">Payment Information</TabsTrigger>
                     </TabsList>
-                    <TabsContent className="mt-[-2px]" value="account">
-                      <div className="clear-both  bg-white border-solid border-t-2  border-[#3C7783] p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10 dotted">
-                        <div className=" mb-10 pt-10 Providers-headings">
-                    <h3 className=" text-[26px] text-[#004F62] mb-3 font-[600] w-full">
-                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">1</span>
-                      <div className="Poppins">Service Providers</div>
-                      </h3>
-                      <p className="text-[18px] Satoshi">Kindly select your desired service provider</p>
-                      
-                        </div>
-                        <div className="block   min-h-[450px] clear-both ">
+                    <TabsContent value="account">
+                      <div className="providers-main">
+                            <div className="providers-boxes">
+                                <div className="providers-boxes-header">
+                                   <div className="img-box">
+                                    <Image src="/img/Providers01.svg"  width={65} height={65}  alt="Picture of the author"/>
+                                   </div>
+                                    <div>
+                                      <button>Select</button>
+                                    </div>
+                                </div>
+                                <h1>Qatar Insurance Company (QIC)</h1>
+                                <div className="providers-boxes-premium">
+                                  
+                                    <div className="box">
+                                    <Accordion type="single" collapsible>
+                                      <AccordionItem className=" border-0" value="item-1">
+                                        <AccordionTrigger>
+                                        <div className=" block">
+                                        <h4>iNSURANCE premium</h4> 
+                                        <h5>150.<span>QAR</span></h5>
+                                        </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="AccordionContent">
+                                        <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
+                                            <ol className='list-disc pl-5 pt-2'>
+                                              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+                                        </ol>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </Accordion>
+                                    </div>
+                                </div>
 
-                        <div className="providers-main">
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
+                            </div>
+                            <div className="providers-boxes">
+                                <div className="providers-boxes-header">
+                                   <div className="img-box">
+                                    <Image src="/img/Providers01.svg"  width={65} height={65}  alt="Picture of the author"/>
+                                   </div>
+                                    <div>
+                                      <button>Select</button>
+                                    </div>
+                                </div>
+                                <h1>Qatar Insurance Company (QIC)</h1>
+                                <div className="providers-boxes-premium">
+                                  
+                                    <div className="box">
+                                    <Accordion type="single" collapsible>
+                                      <AccordionItem className=" border-0" value="item-1">
+                                        <AccordionTrigger>
+                                        <div className=" block">
+                                        <h4>iNSURANCE premium</h4> 
+                                        <h5>150.<span>QAR</span></h5>
+                                        </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="AccordionContent">
+                                        <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
+                                            <ol className='list-disc pl-5 pt-2'>
+                                              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+                                        </ol>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </Accordion>
+                                    </div>
+                                </div>
 
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
+                            </div>
+                            <div className="providers-boxes">
+                                <div className="providers-boxes-header">
+                                   <div className="img-box">
+                                    <Image src="/img/Providers01.svg"  width={65} height={65}  alt="Picture of the author"/>
+                                   </div>
+                                    <div>
+                                      <button>Select</button>
+                                    </div>
+                                </div>
+                                <h1>Qatar Insurance Company (QIC)</h1>
+                                <div className="providers-boxes-premium">
+                                  
+                                    <div className="box">
+                                    <Accordion type="single" collapsible>
+                                      <AccordionItem className=" border-0" value="item-1">
+                                        <AccordionTrigger>
+                                        <div className=" block">
+                                        <h4>iNSURANCE premium</h4> 
+                                        <h5>150.<span>QAR</span></h5>
+                                        </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="AccordionContent">
+                                        <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
+                                            <ol className='list-disc pl-5 pt-2'>
+                                              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+                                        </ol>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </Accordion>
+                                    </div>
+                                </div>
 
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
+                            </div>
+                            <div className="providers-boxes">
+                                <div className="providers-boxes-header">
+                                   <div className="img-box">
+                                    <Image src="/img/Providers01.svg"  width={65} height={65}  alt="Picture of the author"/>
+                                   </div>
+                                    <div>
+                                      <button>Select</button>
+                                    </div>
+                                </div>
+                                <h1>Qatar Insurance Company (QIC)</h1>
+                                <div className="providers-boxes-premium">
+                                  
+                                    <div className="box">
+                                    <Accordion type="single" collapsible>
+                                      <AccordionItem className=" border-0" value="item-1">
+                                        <AccordionTrigger>
+                                        <div className=" block">
+                                        <h4>iNSURANCE premium</h4> 
+                                        <h5>150.<span>QAR</span></h5>
+                                        </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="AccordionContent">
+                                        <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
+                                            <ol className='list-disc pl-5 pt-2'>
+                                              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+                                        </ol>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </Accordion>
+                                    </div>
+                                </div>
 
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
+                            </div>
+                            <div className="providers-boxes">
+                                <div className="providers-boxes-header">
+                                   <div className="img-box">
+                                    <Image src="/img/Providers01.svg"  width={65} height={65}  alt="Picture of the author"/>
+                                   </div>
+                                    <div>
+                                      <button>Select</button>
+                                    </div>
+                                </div>
+                                <h1>Qatar Insurance Company (QIC)</h1>
+                                <div className="providers-boxes-premium">
+                                  
+                                    <div className="box">
+                                    <Accordion type="single" collapsible>
+                                      <AccordionItem className=" border-0" value="item-1">
+                                        <AccordionTrigger>
+                                        <div className=" block">
+                                        <h4>iNSURANCE premium</h4> 
+                                        <h5>150.<span>QAR</span></h5>
+                                        </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="AccordionContent">
+                                        <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
+                                            <ol className='list-disc pl-5 pt-2'>
+                                              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+                                        </ol>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </Accordion>
+                                    </div>
+                                </div>
 
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
+                            </div>
+                            <div className="providers-boxes">
+                                <div className="providers-boxes-header">
+                                   <div className="img-box">
+                                    <Image src="/img/Providers01.svg"  width={65} height={65}  alt="Picture of the author"/>
+                                   </div>
+                                    <div>
+                                      <button>Select</button>
+                                    </div>
+                                </div>
+                                <h1>Qatar Insurance Company (QIC)</h1>
+                                <div className="providers-boxes-premium">
+                                  
+                                    <div className="box">
+                                    <Accordion type="single" collapsible>
+                                      <AccordionItem className=" border-0" value="item-1">
+                                        <AccordionTrigger>
+                                        <div className=" block">
+                                        <h4>iNSURANCE premium</h4> 
+                                        <h5>150.<span>QAR</span></h5>
+                                        </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="AccordionContent">
+                                        <span className=" text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
+                                            <ol className='list-disc pl-5 pt-2'>
+                                              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                              <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                              <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
+                                        </ol>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </Accordion>
+                                    </div>
+                                </div>
 
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
-
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
-
-                           </div>
-                           <div className="providers-boxes">
-                              <div className="providers-boxes-header">
-                                 <div>
-                                   <img src="/img/Providers01.png" />
-                                  </div>
-                                  <div>
-                                    <button>Select</button>
-                                  </div>
-                               </div>
-                               <h1>Qatar Insurance Company (QIC)</h1>
-                               <div className="providers-boxes-premium">
-                                 
-                                  <div className="box">
-                                  <Accordion type="single" collapsible>
-                                    <AccordionItem className=" border-0" value="item-1">
-                                      <AccordionTrigger>
-                                      <div className=" block">
-                                      <h4>iNSURANCE premium</h4> 
-                                      <h5>150.<span>QAR</span></h5>
-                                      </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                      <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
-                                          <ol className='list-disc pl-5 pt-2'>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
-                                            <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                                            <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
-                                      </ol>
-                                      </AccordionContent>
-                                    </AccordionItem>
-                                  </Accordion>
-                                  </div>
-                               </div>
-
-                           </div>
-                        </div>
-
-
-                      <ul className=" gap-4  grid grid-cols-4">
-                      {isLoading ? insuranceData.filter((x:any) => x.subService !== 'Visa').map((data, index) => (
-                          <InsuranceCard
-                            key={index}
-                            insuranceData={data}
-                            onClick={() => handleCardClick(index)}
-                            isSelected={index === selectedCardIndex}
-                            openSummary={false}
-                          />
-                        )): 
-                        <Image
-                        src="/img/loading.gif"
-                        width={60}
-                        height={50}
-                        alt="Picture of the author"
-                        className="text-center mx-auto mb-3"
-                      />}
-                      </ul>
+                            </div>
+                           
                       </div>
-                      <div className="flex justify-center">
-                        {isButtonActive && (
-                          <button
-                          className="text-black  bg-no-repeat p-3 pl-8 pr-8 mr-3 mt-5 bg-[url('/img/button-white.png')] w-[355px] h-[60px]"
-                            onClick={()=>Router.push('/')}
-                          >
-                            Exit
-                          </button>
-                        )}
-                        {isButtonActive && (
-                          <button
-                            className="text-white  bg-no-repeat p-3 pl-8 pr-8 mt-5 bg-[url('/img/button-yellow.png')] w-[360px] h-[60px]"
-                            onClick={()=>setActiveTab('payment')}
-                            
-                          >
-                            Continue
-                          </button>
-                        )}
-                        </div>
+                      <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>
+                      <hr className="mb-20"></hr>
+                      <div className="buttonexistcont">
+                       
+                        <button>Exist</button>
+                        <button>Continue</button>
                       </div>
                     </TabsContent>
-                    <TabsContent className="mt-0"  value="payment">
-                    <div className="clear-both   min-h-[450px] bg-white border-solid border-t-2  border-[#3C7783] p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
-                        <div className=" mb-10">
-                        <div className="mb-6">
-                  <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
-                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">2.1</span>
-                        Payment Summary
-                      </h3>
-                      <p>Here’re your payment details</p>
-                  </div>
-
-                  <div className="bg-[#F8F8F8] border border-[#e1e1e1] p-6 mb-10">
-                     <div className="flex justify-between mb-6">
-                      <div className="font-semibold">Items</div>
-                      <div className=" text-[#60737D]">Total</div>
-                     </div>
-                     {combineData.map((t:any,ind)=>
-                     
-                     <div className="flex justify-end items-center  mb-10 gap-10" key={ind}>
-                      <div className="l">{t.clientName} Fees</div>
-                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
-                      <div className="">{t?.price?.toFixed(2)}</div>
-                     </div>
-                     )}
-                     <div className="flex justify-end items-center  mb-10 gap-10">
-                      <div className="l">Security Deposit</div>
-                      <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
-                      <div className="">150.00</div>
-                     </div>
-                      <div className=" flex justify-end"><button className="bg-[#D5CC65] px-8 p-4 flex justify-between gap-10 "><div>Total (QAR)</div>  <div>1,000.00</div></button>
-                      </div>
-                  </div>
-                  <div className="mb-6">
-                  <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
-                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">2.2</span>
-                      Payment
-                      </h3>
-                     
-                  </div>
-                  <div className="bg-[#F8F8F8] border border-[#e1e1e1] p-6 mb-10">
-                  <div className="flex justify-between mb-6">
-                      <div className="font-semibold">TOTAL</div>
-                      <div className="font-semibold ">{} .QAR</div>
-                     </div>
-                     <div className=" text-center py-32">Payment Gateway Widget</div>
-                    </div>
-                    <div className="mb-6">
-                  <h3 className=" text-[22px] text-[#004F62] mb-3 font-[600] w-full">
-                      <span className="bg-[url('/img/countBg.png')] bg-no-repeat bg-center p-6 absolute ml-[-72px] mt-[-25px] text-[#fff]">2.3</span>
-                      Terms & Conditions
-                      </h3>
-                      <div className="flex gap-2 items-center"><Checkbox />I have read and understood the <a href=""className=" underline text-[#03A290]">Terms & Conditions.</a></div>
-                  </div>
-                          </div></div>
-                          <div className="flex justify-center">
-                        {isButtonActive && (
-                          <button
-                            className="text-black  bg-no-repeat p-3 pl-8 pr-8 mr-3 mt-5 bg-[url('/img/button-white.png')] w-[355px] h-[60px]"
-                             onClick={()=>setActiveTab('account')}
-                          >
-                            Exit
-                          </button>
-                        )}
-                        {isButtonActive && (
-                          <button
-                            className="text-white  bg-no-repeat p-3 pl-8 pr-8 mt-5 bg-[url('/img/button-yellow.png')] w-[360px] h-[60px]"
-                            onClick={()=>PayNow()}
+                    <TabsContent value="password">
+                       <div className="payment-info">
+                          <div className="payment-item">
+                            <div className="lft">Item</div>
+                            <div className="rgt">Total</div>
+                          </div>
+                          <div className="payment-itemboxes">
+                            <div className="lft">VISA Fees</div>
+                            <div className="rgt">150.QAR</div>
+                          </div>
+                          <div className="payment-itemboxes">
+                            <div className="lft">Medical Insurance Fee</div>
+                            <div className="rgt">150.QAR</div>
+                          </div>
+                          <div className="payment-itemboxes">
+                            <div className="lft">Security Deposit</div>
+                            <div className="rgt">150.QAR</div>
+                          </div>
+                           <button className="Total"><div>Total</div> <div>600.QAR</div></button>
+                           <div className="payment-option">
+                            <p>Payment Options</p>
+                           </div>
+                           <div className="Conditions-sec">
                             
-                          >
-                            Continue
-                          </button>
-                        )}
-                        </div>
-                         
+                              <Checkbox />
+                               <div>I’ve read and agree to the </div>
+                               <a href=""className=" underline  font-[500]">Terms & Conditions.</a>
+                           </div>
+                           <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>
+                           <hr className="mb-20"></hr>
+                           <Dialog>
+                             
+                           <div className="buttonexistcont">
+                              <button>Exist</button>
+                              <DialogTrigger> Pay 600.QAR</DialogTrigger>
+                            
+                            </div>
+                          
+                              <DialogContent>
+                                <DialogHeader>
+                                  <DialogTitle><Image
+                                    src="/img/Union.svg"
+                                    width={19}
+                                    height={19}
+                                    alt="Picture of the author"
+                                    className=""
+                                  /></DialogTitle>
+                                  <DialogDescription className="DialogContent">
+                                    <p> You’ll be redirected to a payment gateway to continue your payment process.</p>
+                                    <div className="DialogContent-buttons">
+                                      <button className="Back">Back</button>
+                                      <button className="Continue">Continue</button>
+                                    
+                                    </div>
+                                  </DialogDescription>
+                                </DialogHeader>
+                              </DialogContent>
+                            </Dialog>
+                                 
+                             
+                       </div>
                     </TabsContent>
                   </Tabs>
-                
-               
+                  </div>
 
               </div>
             </div>
