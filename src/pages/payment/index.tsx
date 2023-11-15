@@ -422,7 +422,7 @@ const Payment = () => {
                         </div> */}
 
 
-                      <div className="providers-main">
+                      <ul className=" gap-4  grid grid-cols-4">
                       {isLoading ? insuranceData.filter((x:any) => x.subService !== 'Visa').map((data, index) => (
                           <InsuranceCard
                             key={index}
@@ -439,7 +439,7 @@ const Payment = () => {
                         alt="Picture of the author"
                         className="text-center mx-auto mb-3"
                       />}
-                      </div>
+                      </ul>
                       </div>
                       <div className="flex justify-center">
                         {isButtonActive && (
