@@ -375,6 +375,10 @@ background-color: #881A38;
   background: #FFBF00;
   
 }
+.providers-boxes-header button.active {
+  background: #FFBF00;
+  border: 2px solid #FFBF00;
+}
 .providers-boxes h1 {
   color: #252525;
   font-size: 18px;
@@ -471,9 +475,12 @@ button.success-continue {
   align-items: center;
   gap: 10px;
   font-family: 'Satoshi-Medium';
-  margin: 60px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
-
+button.activetab-buton {
+  background: #d5cc65;
+  border: 1px solid #d5cc65 !important;
+}
 
 .tabs-back {
   box-shadow: 0px 50px 200px 0px rgba(0, 0, 0, 0.08);
@@ -512,8 +519,11 @@ button.success-continue {
 
 .providers-boxes-header .img-box img {
   border: 2px solid #317684;
-  border-radius: 16px;
-  padding: 1px;
+    border-radius: 16px;
+    padding: 1px;
+    height: 80px;
+    width: 80px;
+    object-fit: scale-down;
 }
 .AccordionContent {
   font-family: 'Satoshi-Medium';
@@ -670,35 +680,12 @@ button.success-continue {
   color: #fff;
 }
 .success-main {
-  background: url(/img/account-created-bg2.svg) center no-repeat;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  font-family: 'Satoshi-Medium';
+  margin-bottom: 230px;
 }
-.success-main .text {
-  text-align: center;
-  margin-top: 290px;
-  font-family: 'Satoshi-Bold';
-  color: #fff;
-}
-
-.success-main .text h2 {
-  font-size: 40px;
-  font-style: normal;
-  line-height: 48px; /* 120% */
-  letter-spacing: 0.12px;
-  font-feature-settings: 'salt' on;
-}
-
-.success-main .text p {
-  font-size: 22px;
-  font-style: normal;
-  line-height: 32px; /* 145.455% */
-  letter-spacing: 0.132px;
-  font-feature-settings: 'salt' on;
+.success-main img {
+  margin-bottom: -120px;
+ 
 }
 @media only screen and (max-width: 1400px){
 .providers-boxes h1 {width: 100%;}
