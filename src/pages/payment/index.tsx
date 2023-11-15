@@ -138,7 +138,7 @@ const Payment = () => {
                         </div>
                         <div className="block   min-h-[450px] clear-both ">
 
-                        <div className="providers-main">
+                        {/* <div className="providers-main">
                            <div className="providers-boxes">
                               <div className="providers-boxes-header">
                                  <div>
@@ -419,10 +419,10 @@ const Payment = () => {
                                </div>
 
                            </div>
-                        </div>
+                        </div> */}
 
 
-                      <ul className=" gap-4  grid grid-cols-4">
+                      <div className="providers-main">
                       {isLoading ? insuranceData.filter((x:any) => x.subService !== 'Visa').map((data, index) => (
                           <InsuranceCard
                             key={index}
@@ -439,7 +439,7 @@ const Payment = () => {
                         alt="Picture of the author"
                         className="text-center mx-auto mb-3"
                       />}
-                      </ul>
+                      </div>
                       </div>
                       <div className="flex justify-center">
                         {isButtonActive && (

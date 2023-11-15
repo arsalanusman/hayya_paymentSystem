@@ -227,6 +227,17 @@ background-color: #881A38;
   background: url(/img/provider-but-selected.png) center no-repeat;
   color: #fff;
 }
+.providers-boxes-header .logo img {
+  border: 2px solid #3C7783;
+  width: 80px;
+  height: 80px;
+  object-fit: scale-down;
+  border-radius: 0px;
+}
+.button-selected {
+  background: url(/img/provider-but-selected.png) center no-repeat !important;
+  color: #fff;
+}
 .providers-boxes h1 {
   color: #252525;
   font-size: 18px;
