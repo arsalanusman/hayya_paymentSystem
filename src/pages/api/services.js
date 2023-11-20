@@ -7,7 +7,13 @@ export default async (req, res) => {
       id = 'DD6E76F2-346A-4889-AC14-1176A673EF9C'
     }
 
-    const response = await fetch(`${process.env.BASE_API_URL}/api/Services?ServiceId=${id}`);
+    const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub?Serviceid=${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json", // Set the request content type,
+        'Ocp-Apim-Subscription-Key':'835e396d470544c7838d7f083698808b'
+      }
+    });
     const data = await response.json();
     res.status(200).json(data.data);
   } catch (error) {

@@ -6,7 +6,7 @@ export default async (req, res) => {
       "vendorCode": req.body.vendorCode
     }
 
-    const response = await fetch(`${process.env.BASE_API_URL}/api/Services/transaction-success`, {
+    const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub/transaction-success`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type
