@@ -46,7 +46,7 @@ const Transaction = () => {
     const data = await response.json();
     setTimeout(()=>{
       setIsLoading(true)
-      Router.push(`/download_transaction/?transactionId=${transId}`)
+      Router.push(`/download_transaction/?hshUserid=${data.transactionId}&quoteNo=${data.QuoteNo}`)
     },100)
    
   }

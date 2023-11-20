@@ -16,7 +16,8 @@ const x = HayyaWithMe;
 const Transaction = () => {
   const Router = useRouter();
   const searchParams = useSearchParams();
-  const transId = searchParams.get('transactionId');
+  const hshUserid = searchParams.get('hshUserid');
+  const quoteNo = searchParams.get('quoteNo');
   const { t } = useTranslation([FILE_NAME]);
   const tr = (key: string) => getTranslation(t, FILE_NAME, key);
   const apiUrl = '/api/downloadpolicyreport';
@@ -30,7 +31,8 @@ const Transaction = () => {
   const sendTransaction = async () => {
     try {
       let request = {
-        "transactionId": transId
+        "transactionId": hshUserid,
+        "QuoteNo": quoteNo
       };
       const response = await fetch(apiUrl, {
         method: "POST",
