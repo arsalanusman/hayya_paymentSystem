@@ -78,7 +78,11 @@ const Payment = () => {
     setOtherCard(findVisa)
     setSelectedCard(selectedInsurance);
     setCombineData([selectedInsurance, findVisa])
-    setAmount(combineData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0))
+    setTimeout(()=>{
+
+      setAmount(combineData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0) + 150)
+    },200)
+    console.log(selectedInsurance, amount, findVisa)
     // if(findVisa){
       
     //   localStorage.setItem("visa", JSON.stringify(findVisa));
@@ -203,7 +207,7 @@ const Payment = () => {
                             <div className="lft">Security Deposit</div>
                             <div className="rgt">150.QAR</div>
                           </div>
-                           <button className="Total"><div>Total</div> <div>600.QAR</div></button>
+                           <button className="Total"><div>Total</div> <div>{amount}.QAR</div></button>
                            <div className=" clear-both"></div>
                           {/* <div className=" flex justify-end"><button className="bg-[#D5CC65] px-8 p-4 flex justify-between gap-10 "><div>Total (QAR)</div>  <div>1,000.00</div></button>
                           </div> */}
@@ -252,7 +256,7 @@ const Payment = () => {
                               //   Continue
                               // </button>
                               <Dialog>
-                              <DialogTrigger> Pay 600.QAR</DialogTrigger>
+                              <DialogTrigger> Pay {amount}.QAR</DialogTrigger>
                               <DialogContent>
                                  <DialogHeader>
                                    <DialogTitle><Image
