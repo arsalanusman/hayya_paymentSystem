@@ -759,3 +759,11 @@
   .btn-select{
     border:3px solid #3C7783
   }
+
+  .sort {
+    position: relative;
+    top: 24px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}   

@@ -687,6 +687,15 @@ button.activetab-buton {
   margin-bottom: -120px;
  
 }
+
+
+.sort {
+  position: relative;
+  top: 24px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}   
 @media only screen and (max-width: 1400px){
 .providers-boxes h1 {width: 100%;}
 .providers-boxes{  padding: 20px 20px;}
