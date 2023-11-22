@@ -695,7 +695,22 @@ button.activetab-buton {
   text-align: right;
   display: flex;
   justify-content: flex-end;
+  font-size: 13px;
 }   
+
+.sort p {
+  font-weight: 500;
+}
+
+.sort svg {
+  position: relative;
+  top: 1px;
+  background: #efefef;
+  left: 0;
+  padding: 2px;
+  height: 20px;
+  width: 20px;
+}
 @media only screen and (max-width: 1400px){
 .providers-boxes h1 {width: 100%;}
 .providers-boxes{  padding: 20px 20px;}
