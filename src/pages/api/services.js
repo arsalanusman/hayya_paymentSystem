@@ -6,8 +6,9 @@ export default async (req, res) => {
     }else if(req.query.type == 'moi'){
       id = 'DD6E76F2-346A-4889-AC14-1176A673EF9C'
     }
-
-    const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub?Serviceid=${id}`, {
+    var buf = Buffer.from(req.query.external, 'base64').toString('utf-8')
+    console.log(buf)
+    const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub?Serviceid=${id}&ExternalUserId=${buf}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json", // Set the request content type,

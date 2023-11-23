@@ -35,7 +35,7 @@ const Payment = () => {
   const [selectedCard, setSelectedCard]:any = useState({});
   const [otherCard, setOtherCard]:any = useState({});
   const [isButtonActive, setIsButtonActive] = useState(false);
-  const [combineData, setCombineData] = useState([]);
+  const [combineData, setCombineData]:any = useState([]);
   const [amount, setAmount]:any = useState(0);
   const [sort,setSort]:any = useState(0)
   const [activeTab, setActiveTab] = useState('account');
@@ -46,13 +46,14 @@ const Payment = () => {
   
 
   useEffect(() => {
-    console.log(searchParams.get('serviceType'),'searchParams1')
+    console.log(searchParams.get('external'),'searchParams1')
     const fetchInsuranceData = async () => {
       try {
        
         const serviceTypeParam = searchParams.get('serviceType')
+        const externalParam = searchParams.get('external')
         if(serviceTypeParam){
-            const response = await fetch(apiUrl + `?type=${serviceTypeParam}`);
+            const response = await fetch(apiUrl + `?type=${serviceTypeParam}&external=${externalParam}`);
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -75,15 +76,11 @@ const Payment = () => {
     setIsButtonActive(true);
     // You can also save the selected insurance data in localStorage here
      const selectedInsurance = insuranceData[index];
-    let findVisa = insuranceData.filter((x:any)=>x.subService == 'Visa')[0]
-    setOtherCard(findVisa)
+    // let findVisa = insuranceData.filter((x:any)=>x.subService == 'Visa')[0]
+    // setOtherCard(findVisa)
     setSelectedCard(selectedInsurance);
-    setCombineData([selectedInsurance, findVisa])
-    setTimeout(()=>{  
-
-      setAmount(combineData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0) + 150)
-    },200)
-    console.log(selectedInsurance, amount, findVisa)
+    setCombineData([selectedInsurance])
+    // console.log(selectedInsurance, amount, findVisa)
     // if(findVisa){
       
     //   localStorage.setItem("visa", JSON.stringify(findVisa));
@@ -116,18 +113,38 @@ const Payment = () => {
   };
     
   }
-  console.log(selectedCard)
 
   const handleSort = (e:any) =>{
     let value = e.target.value
     setSort(value)
-    console.log(insuranceData)
     if(value > 1){
       value == 2 ?  insuranceData.sort((a:any, b:any) => a.price - b.price) : insuranceData.sort((a:any, b:any) => b.price - a.price)
     }else{
 
       insuranceData.reverse()
     }
+  }
+  
+  const getFees = async () =>{
+    setActiveTab('payment')
+    console.log(selectedCard)
+    let request = {
+      "external": searchParams.get('external'),
+      "quoteNo":selectedCard.quoteNo,
+    }
+    const response = await fetch('/api/getFee', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Set the request content type
+      },
+      body: JSON.stringify(request), // Convert the request object to JSON
+    });
+    const data = await response?.json();
+    let margeData = [...combineData, data] 
+    setCombineData([...combineData, data])
+    setTimeout(()=>{  
+      setAmount(margeData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0) + 150)
+    },200)
   }
   
   return (
@@ -201,7 +218,7 @@ const Payment = () => {
                         {isButtonActive && (
                           <button
                           className="activetab-buton"
-                            onClick={()=>setActiveTab('payment')}
+                            onClick={()=>getFees()}
                           >
                             Continue
                           </button>
