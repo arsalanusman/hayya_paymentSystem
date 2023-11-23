@@ -26,8 +26,8 @@ const Transaction = () => {
   const apiUrl = '/api/transaction';
 
   useEffect(() => {
-    
-  }, []);
+    setTimeout(()=> sendTransaction(),2000)
+  }, [status == 'paid']);
 
   const sendTransaction = async () => {
     setIsLoading(false)
@@ -44,10 +44,11 @@ const Transaction = () => {
       body: JSON.stringify(request), // Convert the request object to JSON
     });
     const data = await response.json();
+    console.log(data,'data')
     setTimeout(()=>{
-      setIsLoading(true)
-      Router.push(`/download_transaction/?hshUserid=${data.transactionId}&quoteNo=${data.QuoteNo}`)
-    },100)
+      //setIsLoading(true)
+      data.QuoteNo && Router.push(`/download_transaction/?hshUserid=${id}&quoteNo=${data.QuoteNo}`)
+    },1000)
    
   }
 

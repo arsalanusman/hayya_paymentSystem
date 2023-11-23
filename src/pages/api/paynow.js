@@ -7,6 +7,8 @@ export default async (req, res) => {
       serviceId = 'DD6E76F2-346A-4889-AC14-1176A673EF9C'
     }
     
+    
+
     let request = {
       "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "hayyaTransactionId": "A23CD074-C9D0-431A-A29D-5286D782E8DC",
@@ -33,7 +35,7 @@ export default async (req, res) => {
       }
     }
 
-    console.log(serviceId,'serviceId')
+    console.log(request,'serviceId')
 
     const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub/PayNow`, {
         method: "POST",

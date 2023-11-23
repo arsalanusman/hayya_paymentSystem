@@ -51,7 +51,7 @@ const Payment = () => {
       try {
        
         const serviceTypeParam = searchParams.get('serviceType')
-        const externalParam = searchParams.get('external')
+        const externalParam = searchParams.get('ExternalUserId')
         if(serviceTypeParam){
             const response = await fetch(apiUrl + `?type=${serviceTypeParam}&external=${externalParam}`);
             if (!response.ok) {
@@ -95,8 +95,8 @@ const Payment = () => {
       setIsLoading(false);
       const serviceTypeParam = searchParams.get('serviceType')
       let request = {
-        "amount": (amount + 150),
-        "clientSubServiceId": combineData.map((x:any)=>x.id),
+        "amount": (amount),
+        "clientSubServiceId": [selectedCard.subServiceId,"e619cd89-25e9-4629-be02-9d9c2bd2e2ff"],
         "quote":selectedCard,
       }
       const response = await fetch(payUrl + `?type=${serviceTypeParam}`, {
@@ -129,19 +129,20 @@ const Payment = () => {
     setActiveTab('payment')
     console.log(selectedCard)
     let request = {
-      "external": searchParams.get('external'),
+      "external": searchParams.get('ExternalUserId'),
       "quoteNo":selectedCard.quoteNo,
     }
-    const response = await fetch('/api/getFee', {
+    const response:any = await fetch('/api/getFee', {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the request content type
       },
       body: JSON.stringify(request), // Convert the request object to JSON
     });
-    const data = await response?.json();
-    let margeData = [...combineData, data] 
-    setCombineData([...combineData, data])
+    const data = await response.json();
+    let margeData =  [...combineData, ...data]
+    console.log(margeData,'margeData')
+     setCombineData([...combineData, ...data])
     setTimeout(()=>{  
       setAmount(margeData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0) + 150)
     },200)
@@ -231,7 +232,7 @@ const Payment = () => {
                           <div className="lft">Item</div>
                           <div className="rgt">Total</div>
                         </div>
-                        {combineData.map((t:any,ind)=>
+                        {combineData.map((t:any,ind:any)=>
                         <>
                           <div className="payment-itemboxes" key={ind}>
                               <div className="lft">{t.clientName} Fees</div>
@@ -249,10 +250,10 @@ const Payment = () => {
                           <div className="w-[73%] "> <hr className="border-b-2 border-b-[#ccc] w-full"></hr></div>
                           <div className="">150.00</div>
                         </div> */}
-                         <div className="payment-itemboxes">
+                         {/* <div className="payment-itemboxes">
                             <div className="lft">Security Deposit</div>
                             <div className="rgt">150.QAR</div>
-                          </div>
+                          </div> */}
                            <button className="Total"><div>Total</div> <div>{amount}.QAR</div></button>
                            <div className=" clear-both"></div>
                           {/* <div className=" flex justify-end"><button className="bg-[#D5CC65] px-8 p-4 flex justify-between gap-10 "><div>Total (QAR)</div>  <div>1,000.00</div></button>
