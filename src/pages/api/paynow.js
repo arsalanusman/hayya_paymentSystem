@@ -10,16 +10,16 @@ export default async (req, res) => {
     
 
     let request = {
-      "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "hayyaTransactionId": "A23CD074-C9D0-431A-A29D-5286D782E8DC",
-      "amount": req.body.amount,
-      "quoteNo": req.body.quote.quoteNo,
-      "promoCode": null,
-      "serviceDetials": {
+      "UserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "HayyaTransactionId": "A23CD074-C9D0-431A-A29D-5286D782E8DC",
+      "Amount": req.body.amount,
+      "QuoteNo": req.body.quote.quoteNo,
+      "PromoCode": null,
+      "ServiceDetaills": {
         "serviceId": serviceId,
-        "clientSubServiceId": req.body.clientSubServiceId
+        "SubServiceDetail":req.body.clientSubServiceId
       },
-      "paymentRequest": {
+      "PaymentRequest": {
         "amount": req.body.amount,
         "currency": "USD",
         "transactionId": "A23CD074-C9D0-431A-A29D-5286D782E8DC",

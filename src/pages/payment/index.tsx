@@ -94,9 +94,10 @@ const Payment = () => {
     try { 
       setIsLoading(false);
       const serviceTypeParam = searchParams.get('serviceType')
+
       let request = {
         "amount": (amount),
-        "clientSubServiceId": [selectedCard.subServiceId,"e619cd89-25e9-4629-be02-9d9c2bd2e2ff"],
+        "clientSubServiceId": [ {ClientSubServiceId: selectedCard.id, Price: selectedCard.price},{ClientSubServiceId: "e92c0078-34da-4ca1-a1c5-a5b579e90955", price:150}],
         "quote":selectedCard,
       }
       const response = await fetch(payUrl + `?type=${serviceTypeParam}`, {
@@ -107,7 +108,13 @@ const Payment = () => {
         body: JSON.stringify(request), // Convert the request object to JSON
       });
       const data = await response.json();
-      Router.push(data.data)  
+      if(data.statusCode == 409){
+        alert(data.message)
+        // Router.push('/?serviceType=moi')  
+      }else{
+
+        Router.push(data.data)  
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
   };
@@ -129,7 +136,7 @@ const Payment = () => {
     setActiveTab('payment')
     console.log(selectedCard)
     let request = {
-      "external": searchParams.get('ExternalUserId'),
+      "external": searchParams.get('ExternalUserId') ? searchParams.get('ExternalUserId') : searchParams.get('externalUserId'),
       "quoteNo":selectedCard.quoteNo,
     }
     const response:any = await fetch('/api/getFee', {
@@ -144,7 +151,7 @@ const Payment = () => {
     console.log(margeData,'margeData')
      setCombineData([...combineData, ...data])
     setTimeout(()=>{  
-      setAmount(margeData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0) + 150)
+      setAmount(margeData.reduce((accumulator:any, currentValue:any) => accumulator + currentValue.price, 0))
     },200)
   }
   
