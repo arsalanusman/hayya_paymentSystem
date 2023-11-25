@@ -736,6 +736,13 @@ button.activetab-buton {
 .Summary-boxes {   grid-template-columns: 50% 16% 30%; }
 .Payment-heading img {   width: 14px;}
 
+
+.sort {
+  top: 50px;
+  justify-content: center;
+}
+.filter{min-height: 40px;}
+.buttonexistcont{flex-direction:column-reverse}
 }
 
 
@@ -748,10 +755,10 @@ button.activetab-buton {
 .Providers-headings h3 {  font-size: 20px;}
 .Providers-headings p {  font-size: 14px;}
 .Payment-heading span {    font-size: 20px; }
-.Conditions-sec {   justify-content: flex-start;  align-items: flex-start;  flex-direction: column;}
+.Conditions-sec {   justify-content: flex-start;  align-items: flex-start;  flex-flow: wrap;}
 .TabsList-but {  gap: 5px;  flex-direction: column !important;}
 .tabs-back {  padding: 60px 30px;}
-.buttonexistcont {  gap: 6px;  flex-direction: column;}
+.buttonexistcont {  gap: 6px;  flex-direction: column-reverse;}
 .payment-info {   padding-top: 50px;}
 .payment-info .Total {  float: none;  width: 100%; }
 .payment-itemboxes .lft {  font-size: 14px;  }

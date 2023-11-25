@@ -174,7 +174,7 @@ const Payment = () => {
                 <div className="tabs-back">
                   <Tabs value={activeTab} defaultValue="account" className="">
                     <TabsList className="TabsList-but bg-transparent">
-                      <TabsTrigger className={`` } value="account" onClick={()=>setActiveTab('account')}> Service Provides</TabsTrigger>
+                      <TabsTrigger className={`` } value="account" onClick={()=>setActiveTab('account')}> Service provider</TabsTrigger>
                       <TabsTrigger className={`` }  value="payment" >Payment Information</TabsTrigger>
                     </TabsList>
                     <TabsContent  value="account">
