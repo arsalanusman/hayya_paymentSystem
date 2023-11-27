@@ -177,7 +177,12 @@ const Payment = () => {
                       <TabsTrigger className={`` } value="account" onClick={()=>setActiveTab('account')}> Service provider</TabsTrigger>
                       <TabsTrigger className={`` }  value="payment" >Payment Information</TabsTrigger>
                     </TabsList>
+                       
                     <TabsContent  value="account">
+                    <div className="travel-insurance">
+                      <h1>Travel Insurance</h1>   
+                      <p>Select one or more travel insurances based on your chosen mode of travel. Please note that requirements may vary</p>     
+                      </div>  
                       <div className="filter">
                         <div className="sort">
                         <p>Sort By:</p> <select
@@ -234,6 +239,10 @@ const Payment = () => {
                         </div>
                     </TabsContent>
                     <TabsContent   value="payment">
+                    <div className="travel-insurance">
+                      <h1>Payment Details</h1>   
+                      <p>Finalize your transaction based on the selected Visa type and application details</p>     
+                      </div> 
                       <div className="payment-info">
                         <div className="payment-item">
                           <div className="lft">Item</div>
@@ -242,7 +251,7 @@ const Payment = () => {
                         {combineData.map((t:any,ind:any)=>
                         <>
                           <div className="payment-itemboxes" key={ind}>
-                              <div className="lft">{t.clientName} Fees</div>
+                              <div className="lft">{t.clientName} </div>
                               <div className="rgt">{t?.price?.toFixed(2)} .QAR</div>
                           </div>
                           {/* <div className="flex justify-end items-center  mb-10 gap-10" key={ind}>

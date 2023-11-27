@@ -715,6 +715,29 @@ button.activetab-buton {
   display:table;
   margin:0 auto;
 }
+.travel-insurance {
+  margin-top: 50px;
+}
+
+.travel-insurance h1 {
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 42px; /* 123.529% */
+  letter-spacing: 0.136px;
+  font-family: 'Satoshi-Bold';
+  margin-bottom: 10px;
+}
+
+.travel-insurance p {
+  font-feature-settings: 'salt' on;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: 0.112px;
+  font-family: 'Satoshi-Regular';
+}
 @media only screen and (max-width: 1400px){
 .providers-boxes h1 {width: 100%;}
 .providers-boxes{  padding: 20px 20px;}

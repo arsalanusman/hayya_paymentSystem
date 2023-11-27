@@ -90,14 +90,14 @@ const InsuranceCard = ({ insuranceData, isSelected, onClick }:any) => {
                       <h5>{insuranceData.price}<span>.QAR</span></h5>
                       </div>
                       </AccordionTrigger>
-                      <AccordionContent className="AccordionContent">
+                      {/* <AccordionContent className="AccordionContent">
                       <span className="text-xs text-[#3C7783] uppercase font-[600] ">Information</span>
                           <ol className='list-disc pl-5 pt-2'>
                             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
                             <li>eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
                             <li>Ut enim ad minim veniam, eiusmod tempor incididunt ut labore</li>
                       </ol>
-                      </AccordionContent>
+                      </AccordionContent> */}
                     </AccordionItem>
                   </Accordion>
                   </div>
