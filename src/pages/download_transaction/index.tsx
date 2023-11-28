@@ -30,9 +30,11 @@ const Transaction = () => {
 
   const sendTransaction = async () => {
     try {
+      let GetUserId = localStorage.getItem("ExternalUserId")
       let request = {
         "transactionId": hshUserid,
-        "QuoteNo": quoteNo
+        "QuoteNo": quoteNo,
+        external: GetUserId
       };
       const response = await fetch(apiUrl, {
         method: "POST",

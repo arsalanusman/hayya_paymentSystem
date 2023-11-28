@@ -5,12 +5,13 @@ export default async (req, res) => {
       "externalPartyId": req.body.externalPartyId,
       "vendorCode": req.body.vendorCode
     }
-
+    var buf = Buffer.from(req.body.external, 'base64').toString('utf-8')
     const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub/transaction-success`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type
-          "Ocp-Apim-Subscription-Key":"835e396d470544c7838d7f083698808b"
+          "Ocp-Apim-Subscription-Key":"835e396d470544c7838d7f083698808b",
+          "ExternalUserId":buf
         },
         body: JSON.stringify(request), // Convert the request object to JSON
       });

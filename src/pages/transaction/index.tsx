@@ -34,7 +34,8 @@ const Transaction = () => {
     let request = {
       "transactionId": transId,
       "externalPartyId": id,
-      "vendorCode": vendorCode
+      "vendorCode": vendorCode,
+      "external": localStorage.getItem("ExternalUserId")
     }
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -47,7 +48,7 @@ const Transaction = () => {
     console.log(data,'data')
     setTimeout(()=>{
       //setIsLoading(true)
-      data.QuoteNo && Router.push(`/download_transaction/?hshUserid=${id}&quoteNo=${data.QuoteNo}`)
+      data.QuoteNo && Router.push(`/download_transaction/?hshUserid=${id}&quoteNo=${data.QuoteNo}&}`)
     },1000)
    
   }

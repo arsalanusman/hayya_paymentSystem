@@ -51,9 +51,11 @@ const Payment = () => {
       try {
        
         const serviceTypeParam = searchParams.get('serviceType')
-        const externalParam = searchParams.get('ExternalUserId')
+        const externalParam:any = searchParams.get('ExternalUserId')
         if(serviceTypeParam){
-            const response = await fetch(apiUrl + `?type=${serviceTypeParam}&external=${externalParam}`);
+            localStorage.setItem("ExternalUserId", externalParam)
+            let GetUserId = localStorage.getItem("ExternalUserId")
+            const response = await fetch(apiUrl + `?type=${serviceTypeParam}&external=${GetUserId}`);
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -96,11 +98,13 @@ const Payment = () => {
       const serviceTypeParam = searchParams.get('serviceType')
 
       let request = {
-        "amount": (amount),
+        "amount": (amount), 
         "clientSubServiceId": [ {ClientSubServiceId: selectedCard.id, Price: selectedCard.price},{ClientSubServiceId: "e92c0078-34da-4ca1-a1c5-a5b579e90955", price:150}],
         "quote":selectedCard,
       }
-      const response = await fetch(payUrl + `?type=${serviceTypeParam}`, {
+      
+      let GetUserId = localStorage.getItem("ExternalUserId")
+      const response = await fetch(payUrl + `?type=${serviceTypeParam}&external=${GetUserId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type
@@ -136,7 +140,7 @@ const Payment = () => {
     setActiveTab('payment')
     console.log(selectedCard)
     let request = {
-      "external": searchParams.get('ExternalUserId') ? searchParams.get('ExternalUserId') : searchParams.get('externalUserId'),
+      "external": localStorage.getItem("ExternalUserId"),
       "quoteNo":selectedCard.quoteNo,
     }
     const response:any = await fetch('/api/getFee', {
