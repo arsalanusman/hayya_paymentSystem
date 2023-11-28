@@ -160,20 +160,21 @@ const Payment = () => {
   }
   
   return (
-    <div className="container-fluid pb-10 px-4 sm:px-20  bg-[#327886]  mx-auto  h-full w-full ">
+    <div className="custom-bg container-fluid pb-10 px-4 sm:px-20    mx-auto  h-full w-full ">
         
         <>
           <div className="px-0 py-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-0 lg:px-8 lg:py-6">
             <div className="grid gap-2 items-baseline grid-cols-1">
               <div className="ease-in duration-300">
                 <div className="Payment-heading">
-                <Image
+                {/* <Image
                       src="/img/p-star.svg"
                       width={32}
                       height={32}
                       alt="Picture of the author"
                       className=""
-                    /> <span>Hayya Payment</span>
+                    /> */}
+                     <span>Hayya Payment</span>
                 </div>
                 <div className="tabs-back">
                   <Tabs value={activeTab} defaultValue="account" className="">
@@ -301,8 +302,8 @@ const Payment = () => {
                           </div> */}      
                            <div className="Conditions-sec">
                             <Checkbox />
-                             <div>I’ve read and agree to the </div>
-                             <a href=""className=" underline  font-[500]">Terms & Conditions.</a>
+                             <div>I have read and agree to the</div>
+                             <a href=""className=" underline  font-[500]">Terms and Conditions.</a>
                            </div>
                             <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>
                             <hr className="mb-20"></hr>

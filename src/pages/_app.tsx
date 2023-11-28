@@ -27,7 +27,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <TopNavigation />
-      <div className='Sticky-main bg-[#327886]'>
+      <div className='Sticky-main bg-[#0C4532]'>
       {/* <Sticky> */}
       <Header />
       {/* </Sticky> */}
