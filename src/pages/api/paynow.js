@@ -35,7 +35,7 @@ export default async (req, res) => {
       }
     }
 
-    console.log(request,'serviceId')
+    console.log(request.ServiceDetaills.SubServiceDetail,'serviceId')
 
     const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub/PayNow`, {
         method: "POST",

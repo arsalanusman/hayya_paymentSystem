@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { HayyaWithMe } from "@/helper/enums/hayya-with-me";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Document, Page, pdfjs } from 'react-pdf';
+import { Document, Page, pdfjs } from "react-pdf";
 
 type Props = {};
 
@@ -16,11 +16,11 @@ const x = HayyaWithMe;
 const Transaction = () => {
   const Router = useRouter();
   const searchParams = useSearchParams();
-  const hshUserid = searchParams.get('hshUserid');
-  const quoteNo = searchParams.get('quoteNo');
+  const hshUserid = searchParams.get("hshUserid");
+  const quoteNo = searchParams.get("quoteNo");
   const { t } = useTranslation([FILE_NAME]);
   const tr = (key: string) => getTranslation(t, FILE_NAME, key);
-  const apiUrl = '/api/downloadpolicyreport';
+  const apiUrl = "/api/downloadpolicyreport";
   const [pdfData, setPdfData] = useState(null);
   const [failed, setFailed] = useState(false);
 
@@ -30,11 +30,11 @@ const Transaction = () => {
 
   const sendTransaction = async () => {
     try {
-      let GetUserId = localStorage.getItem("ExternalUserId")
+      let GetUserId = localStorage.getItem("ExternalUserId");
       let request = {
-        "transactionId": hshUserid,
-        "QuoteNo": quoteNo,
-        external: GetUserId
+        transactionId: hshUserid,
+        QuoteNo: quoteNo,
+        external: GetUserId,
       };
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -44,10 +44,11 @@ const Transaction = () => {
         body: JSON.stringify(request),
       });
       const data = await response.json();
+      console.log(data, "data");
       setPdfData(data);
       setFailed(true);
     } catch (error) {
-      console.error('Error fetching PDF:', error);
+      console.error("Error fetching PDF:", error);
     }
   };
 
@@ -67,24 +68,43 @@ const Transaction = () => {
             </div>
             <div className="bg-white border-solid border-2  border-gray-100 rounded-2xl p-5 sm:p-10 md:p-10 lg:p-10 xl:p-10 2xl:p-10">
               {pdfData ? (
-                  <div>
-                    <iframe src={`data:application/pdf;base64,${pdfData}`} title="PDF" width='100%' height="600px" />
-                  </div>
-                ) : !failed ? <Image
-                src="/img/loading.gif"
-                width={180}
-                height={120}
-                alt="Picture of the author"
-                className="text-center mx-auto mb-3"
-              /> :  <> <Image src="/img/cross.png"  width={180}
-              height={120}
-              alt="Picture of the author"
-              className="text-center mx-auto mt-10" /><h3 className=" text-[30px] text-center font-[500] w-full mt-10">
-                Transaction has Failed
-            </h3></> }
+                <div>
+                  <iframe
+                    src={`data:application/pdf;base64,${pdfData}`}
+                    title="PDF"
+                    width="100%"
+                    height="600px"
+                  />
+                </div>
+              ) : !failed ? (
+                <Image
+                  src="/img/loading.gif"
+                  width={180}
+                  height={120}
+                  alt="Picture of the author"
+                  className="text-center mx-auto mb-3"
+                />
+              ) : (
+                <>
+                  {" "}
+                  <Image
+                    src="/img/cross.png"
+                    width={180}
+                    height={120}
+                    alt="Picture of the author"
+                    className="text-center mx-auto mt-10"
+                  />
+                  <h3 className=" text-[30px] text-center font-[500] w-full mt-10">
+                    Transaction has Failed
+                  </h3>
+                </>
+              )}
               <div className="block">
                 <div className="space-y-2 pt-2 flex justify-center">
-                  <button className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md" onClick={() => Router.push('/?serviceType=moi')}>
+                  <button
+                    className="text-white p-3 pl-8 pr-8 bg-[#d5cc65] rounded-md"
+                    onClick={() => Router.push("/?serviceType=moi")}
+                  >
                     Back
                   </button>
                 </div>
@@ -97,7 +117,9 @@ const Transaction = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({ locale }) => ({
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  locale,
+}) => ({
   props: {
     ...(await serverSideTranslations(locale ?? "en", [FILE_NAME])),
   },
