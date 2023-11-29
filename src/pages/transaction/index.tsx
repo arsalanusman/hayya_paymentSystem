@@ -24,6 +24,9 @@ const Transaction = () => {
   const { t } = useTranslation([FILE_NAME]);
   const tr = (key: string) => getTranslation(t, FILE_NAME, key);
   const apiUrl = "/api/transaction";
+  const downloadPdfAPI = '/api/downloadpolicyreport'
+  const [downloadLink, setDownloadLink] = useState('');
+
 
   useEffect(() => {
     setTimeout(() => sendTransaction(), 2000);
@@ -47,13 +50,66 @@ const Transaction = () => {
     const data = await response.json();
     console.log(data.data, "data");
     setTimeout(() => {
-      //setIsLoading(true)
-      data.data.quoteNo &&
-        Router.push(
-          `/download_transaction/?hshUserid=${id}&quoteNo=${data.data.quoteNo}`
-        );
+      setIsLoading(true)
+      data.data && data.data.quoteNo && downloadPdf(data.data.quoteNo)
+        // Router.push(
+        //   `/download_transaction/?hshUserid=${id}&quoteNo=${data.data.quoteNo}`
+        // );
     }, 1000);
   };
+
+  const downloadPdf = async (quoteNo:any) => {
+    try {
+      let GetUserId = localStorage.getItem("ExternalUserId");
+      let request = {
+        transactionId: transId,
+        QuoteNo: quoteNo,
+        external: GetUserId,
+      };
+      const response = await fetch(downloadPdfAPI, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(request),
+      });
+      const data = await response.json();
+      convertAndDownloadPDF(data);
+      setIsLoading(false)
+      Router.push('https://stgfend.hayya.qa/en/sign-in-redirect?redirectUri=/dashboard/my-hayya-latest')
+      // setPdfData(data);
+      // setFailed(true);
+    } catch (error) {
+      console.error("Error fetching PDF:", error);
+    }
+  };
+
+  const convertAndDownloadPDF = (base64String:any) => {
+    // Convert base64 to Blob
+    const byteCharacters = atob(base64String);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+    // Create object URL
+    const pdfObjectURL = URL.createObjectURL(blob);
+
+    // Set download link
+    setDownloadLink(pdfObjectURL);
+
+    // Trigger download
+    const a = document.createElement('a');
+    a.href = pdfObjectURL;
+    a.download = 'downloaded-file.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+
 
   return (
     <div className="container-fluid pb-10 px-4 sm:px-20 bg-gradient-to-t from-[#0C4532] to-[#327886] to-100%  mx-auto  h-full w-full ">
@@ -174,7 +230,6 @@ const Transaction = () => {
                         />
                       </svg>
                     )}
-
                     <h3 className=" Satoshi text-[40px] text-center font-[700] w-full  text-[#fff] mb-4">
                       {status == "Paid" ? `Success!` : `Payment Failed!`}
                     </h3>

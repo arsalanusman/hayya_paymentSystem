@@ -43,15 +43,19 @@ const Payment = () => {
   const payUrl = "/api/paynow";
   const Router = useRouter();
   const searchParams = useSearchParams();
+  const hayyaId: any = searchParams.get("HayaApplicationId")
 
   useEffect(() => {
     console.log(searchParams.get("external"), "searchParams1");
+    setIsLoading(false); 
     const fetchInsuranceData = async () => {
       try {
+        
         const serviceTypeParam = searchParams.get("serviceType");
         const externalParam: any = searchParams.get("ExternalUserId");
         if (serviceTypeParam) {
           localStorage.setItem("ExternalUserId", externalParam);
+          localStorage.setItem("hayyaId", hayyaId);
           let GetUserId = localStorage.getItem("ExternalUserId");
           const response = await fetch(
             apiUrl + `?type=${serviceTypeParam}&external=${GetUserId}`
@@ -100,7 +104,7 @@ const Payment = () => {
 
       let GetUserId = localStorage.getItem("ExternalUserId");
       const response = await fetch(
-        payUrl + `?type=${serviceTypeParam}&external=${GetUserId}`,
+        payUrl + `?type=${serviceTypeParam}&external=${GetUserId}&hayyaId=${hayyaId}`,
         {
           method: "POST",
           headers: {
@@ -133,6 +137,8 @@ const Payment = () => {
   };
 
   const getFees = async () => {
+    
+    setIsLoading(false);
     setActiveTab("payment");
     console.log(selectedCard);
     let request = {
@@ -158,6 +164,8 @@ const Payment = () => {
           0
         )
       );
+      
+      setIsLoading(true);
     }, 200);
   };
 
@@ -232,9 +240,10 @@ const Payment = () => {
                         </svg>
                       </div>
                     </div>
+                    {isLoading ? ( 
                     <div className="providers-main">
-                      {isLoading ? (
-                        insuranceData
+                     
+                       { insuranceData
                           .filter((x: any) => x.subService !== "Visa")
                           .map((data, index) => (
                             <InsuranceCard
@@ -245,16 +254,16 @@ const Payment = () => {
                               openSummary={false}
                             />
                           ))
-                      ) : (
+                      } 
+                    </div>): (
                         <Image
                           src="/img/loading.gif"
                           width={60}
                           height={50}
                           alt="Picture of the author"
-                          className="text-center mx-auto mb-3"
+                          className="text-center mt-20 mx-auto mb-3"
                         />
                       )}
-                    </div>
                     <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>{" "}
                     <br></br>
                     <hr className="mb-20"></hr>
@@ -280,12 +289,13 @@ const Payment = () => {
                         type and application details
                       </p>
                     </div>
+                    {isLoading ? (
                     <div className="payment-info">
                       <div className="payment-item">
                         <div className="lft">Item</div>
                         <div className="rgt">Total</div>
                       </div>
-                      {combineData.map((t: any, ind: any) => (
+                       {combineData.map((t: any, ind: any) => (
                         <>
                           <div className="payment-itemboxes" key={ind}>
                             <div className="lft">{t.clientName} </div>
@@ -355,7 +365,15 @@ const Payment = () => {
                           </Dialog>
                         )}
                       </div>
-                    </div>
+                    </div>) : (
+                        <Image
+                          src="/img/loading.gif"
+                          width={60}
+                          height={50}
+                          alt="Picture of the author"
+                          className="text-center mt-20 mx-auto mb-3"
+                        />
+                      )}
                   </TabsContent>
                 </Tabs>
               </div>

@@ -8,14 +8,16 @@ export default async (req, res) => {
     }
     
     
+    var userId = Buffer.from(req.query.external, "base64").toString("utf-8");
+    var hayyaId = Buffer.from(req.query.hayyaId, "base64").toString("utf-8");
 
     let request = {
-      "UserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "UserId": userId,
       "HayyaTransactionId": "A23CD074-C9D0-431A-A29D-5286D782E8DC",
       "Amount": req.body.amount,
       "QuoteNo": req.body.quote.quoteNo,
       "PromoCode": null,
-      "ServiceDetaills": {
+      "ServiceDetails": {
         "serviceId": serviceId,
         "SubServiceDetail":req.body.clientSubServiceId
       },
@@ -35,17 +37,19 @@ export default async (req, res) => {
       }
     }
 
-    console.log(request.ServiceDetaills.SubServiceDetail,'serviceId')
+    console.log(request,'serviceId')
 
     const response = await fetch(`${process.env.BASE_API_URL}/ClubServices/api/ServiceClub/PayNow`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the request content type,
-          'Ocp-Apim-Subscription-Key':'835e396d470544c7838d7f083698808b'
+          'Ocp-Apim-Subscription-Key':'835e396d470544c7838d7f083698808b',
+          'ExternalUserId': userId,
         },
         body: JSON.stringify(request), // Convert the request object to JSON
       });
 
+      console.log(await response)
       const data = await response.json();
       res.status(200).json(data);
 

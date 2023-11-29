@@ -15,7 +15,7 @@ export default async (req, res) => {
         headers: {
           "Content-Type": "application/json", // Set the request content type,
           "Ocp-Apim-Subscription-Key": "835e396d470544c7838d7f083698808b",
-          ExternalUserId: buf,
+          'ExternalUserId': buf,
         },
       }
     );
