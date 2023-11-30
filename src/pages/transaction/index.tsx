@@ -76,7 +76,7 @@ const Transaction = () => {
       const data = await response.json();
       convertAndDownloadPDF(data);
       setIsLoading(false)
-      Router.push('https://stgfend.hayya.qa/en/sign-in-redirect?redirectUri=/dashboard/my-hayya-latest')
+      Router.push('https://stgfend.hayya.qa/en/dashboard/my-hayya-latest')
       // setPdfData(data);
       // setFailed(true);
     } catch (error) {
